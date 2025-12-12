@@ -1,7 +1,18 @@
+/* Apply Merriweather globally */
 html,
 body {
   font-family: "Merriweather", serif !important;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  margin: 0;
+  padding: 0;
 }
+
+/* Optional — If any element still overrides font */
+* {
+  font-family: "Merriweather", serif !important;
+}
+
+/* Import Tailwind */
 @import "tailwindcss";
