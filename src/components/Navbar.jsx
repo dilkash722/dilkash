@@ -5,7 +5,7 @@ export default function Navbar({ activeSection }) {
 
   return (
     <nav
-      className="fixed top-0 left-0 w-full z-50 py-2 backdrop-blur-md"
+      className="fixed top-0 left-0 w-full z-50 py-2 backdrop-blur-md font-[Poppins]"
       style={{
         backgroundImage:
           "url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1900&q=80')",
@@ -32,6 +32,7 @@ export default function Navbar({ activeSection }) {
             <p className="text-sm text-gray-300 -mt-1">Advocate</p>
           </div>
         </div>
+
         {/* DESKTOP MENU */}
         <div className="hidden md:flex gap-6 font-medium">
           {[
@@ -81,10 +82,10 @@ export default function Navbar({ activeSection }) {
         </button>
       </div>
 
-      {/* SUPER THIN DIVIDER LINE */}
+      {/* THIN DIVIDER */}
       <div className="relative z-10 w-full h-px bg-white/20"></div>
 
-      {/* MOBILE MENU DROPDOWN */}
+      {/* MOBILE MENU */}
       {open && (
         <div className="relative z-10 md:hidden bg-black bg-opacity-80 backdrop-blur-md px-6 py-4 space-y-3">
           {[
