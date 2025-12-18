@@ -1,130 +1,140 @@
-export default function Contact() {
-  const cardStyle =
-    "p-4 sm:p-6 rounded-2xl border border-yellow-500/30 bg-white/5 backdrop-blur-xl shadow-lg hover:bg-white/10 transition break-all no-underline";
+"use client";
 
+import { motion } from "framer-motion";
+
+const contacts = [
+  {
+    title: "Contact",
+    sub: "Phone Number",
+    value: "+91 XXXXXXXXXX",
+    icon: (
+      <svg
+        className="w-5 h-5 text-orange-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M2.25 6.75c0 8.284 6.716 15 15 15a1.75 1.75 0 001.75-1.75v-2.098a1.75 1.75 0 00-1.16-1.64l-3.03-1.01a1.75 1.75 0 00-1.91.47l-.97.97a12.036 12.036 0 01-5.27-5.27l.97-.97a1.75 1.75 0 00.47-1.91l-1.01-3.03A1.75 1.75 0 006.848 3H4.75A1.75 1.75 0 003 4.75v2z"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "Email",
+    sub: "Get in touch",
+    value: "yourname@example.com",
+    icon: (
+      <svg
+        className="w-5 h-5 text-orange-400"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth="1.5"
+        stroke="currentColor"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M3 7.5v9A2.25 2.25 0 005.25 18.75h13.5A2.25 2.25 0 0021 16.5v-9M3 7.5l9 6 9-6"
+        />
+      </svg>
+    ),
+  },
+  {
+    title: "WhatsApp",
+    sub: "Quick chat",
+    value: "+91 XXXXXXXXXX",
+    icon: (
+      <svg
+        className="w-5 h-5 text-green-400"
+        viewBox="0 0 24 24"
+        fill="currentColor"
+      >
+        <path d="M12.04 2C6.57 2 2.17 6.39 2.17 11.86c0 2.08.61 4.11 1.76 5.85L2 22l4.45-1.86a9.83 9.83 0 005.59 1.78c5.47 0 9.87-4.39 9.87-9.86S17.51 2 12.04 2z" />
+        <path d="M17.47 14.01c-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.19-.46-.38-.4-.54-.41l-.46-.01c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.32.98 2.48c.12.16 1.69 2.57 4.1 3.6z" />
+      </svg>
+    ),
+  },
+];
+
+export default function Contact() {
   return (
-    <div
-      className="min-h-screen w-full relative px-6 py-24 text-white flex flex-col items-center font-[Poppins]"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1698920717731-6819a3de9739?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* DARK OVERLAY */}
-      <div className="absolute inset-0 bg-black/80"></div>
+    <section className="relative min-h-screen bg-black text-white overflow-hidden flex items-center">
+      {/* TOP GLOW — SAME AS ABOUT */}
+      <motion.div
+        className="absolute -top-48 left-1/4 w-[520px] h-[520px] rounded-full
+        bg-gradient-to-br from-yellow-400/30 via-orange-500/25 to-transparent
+        blur-[180px] z-0"
+        animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
+        transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      <motion.div
+        className="absolute -top-64 right-1/4 w-[480px] h-[480px] rounded-full
+        bg-gradient-to-bl from-orange-500/25 to-transparent
+        blur-[160px] z-0"
+        animate={{ x: [0, -80, 0], y: [0, 60, 0] }}
+        transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* BLACK FADE */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black z-[1]" />
+
+      {/* SUBTLE NOISE */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.04)_1px,transparent_0)] bg-[size:24px_24px] opacity-[0.08]" />
 
       {/* CONTENT */}
-      <div className="relative z-10 w-full max-w-5xl text-center">
-        <div className="w-20 h-1 bg-yellow-500 rounded-lg mx-auto mb-6"></div>
-
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-wide mb-6">
-          Contact <span className="text-yellow-400">Advocate Abdul Subhan</span>
-        </h1>
-
-        <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-16">
-          For legal consultation regarding{" "}
-          <span className="font-semibold text-white">
-            Criminal, Civil, Family, Property & Cheque Bounce
-          </span>{" "}
-          cases. Practicing at{" "}
-          <span className="text-yellow-400 font-semibold">
-            Purnea District Civil Court, Bihar.
-          </span>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-20 md:pb-24">
+        {/* LABEL */}
+        <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4">
+          Contact
         </p>
 
-        {/* GRID */}
-        <div
-          className="
-            grid 
-            grid-cols-2
-            md:grid-cols-4
-            gap-8 
-            mt-4
-          "
-        >
-          {/* PHONE */}
-          <div className={cardStyle}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-10 w-10 text-yellow-400 mx-auto mb-3"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-            >
-              <path d="M2.25 6.75c0 8.284 6.716 15 15 15 .966 0 1.75-.784 1.75-1.75v-2.1c0-.72-.47-1.35-1.16-1.54l-3.03-.84a1.75 1.75 0 0 0-1.72.45l-.9.9a12.56 12.56 0 0 1-5.27-5.27l.9-.9a1.75 1.75 0 0 0 .45-1.72l-.84-3.03c-.19-.69-.82-1.16-1.54-1.16h-2.1C3.03 5 2.25 5.784 2.25 6.75z" />
-            </svg>
-            <p className="text-xl font-bold text-yellow-400 break-all no-underline">
-              Phone
-            </p>
-            <p className="text-gray-300 text-sm break-all no-underline">
-              +91 XXXXXXXXXX
-            </p>
-          </div>
+        {/* HEADING */}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.15] mb-12">
+          Get In <br />
+          <span className="text-orange-400">Touch</span>
+        </h1>
 
-          {/* WHATSAPP */}
-          <div className={cardStyle}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-10 w-10 text-green-400 mx-auto mb-3"
-              fill="currentColor"
-              viewBox="0 0 24 24"
+        {/* CONTACT CARDS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
+          {contacts.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.08 }}
+              whileHover={{
+                y: -8,
+                boxShadow: "0 0 40px rgba(255,140,0,0.25)",
+              }}
+              className="
+                p-6 rounded-2xl
+                border border-white/40 ring-1 ring-white/10
+                bg-transparent
+                transition-all
+              "
             >
-              <path d="M12.04 2C6.58 2 2.17 6.41 2.17 11.87c0 2.09.62 4.04 1.69 5.67L2 22l4.62-1.81c1.59.87 3.42 1.37 5.38 1.37 5.46 0 9.87-4.41 9.87-9.87C21.87 6.41 17.5 2 12.04 2Zm0 17.8c-1.67 0-3.22-.49-4.53-1.33l-.32-.2-2.74 1.08 1.06-2.66-.22-.34a7.7 7.7 0 0 1-1.3-4.24c0-4.26 3.47-7.73 7.73-7.73s7.73 3.47 7.73 7.73-3.47 7.73-7.73 7.73Z" />
-            </svg>
-            <p className="text-xl font-bold text-yellow-400 break-all no-underline">
-              WhatsApp
-            </p>
-            <p className="text-gray-300 text-sm break-all no-underline">
-              +91 XXXXXXXXXX
-            </p>
-          </div>
+              <div className="flex items-center gap-2 mb-1">
+                {item.icon}
+                <h3 className="text-base sm:text-lg font-semibold tracking-tight">
+                  {item.title}
+                </h3>
+              </div>
 
-          {/* EMAIL */}
-          <div className={cardStyle}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-10 w-10 text-blue-400 mx-auto mb-3"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-            >
-              <path d="M3 5h18v14H3z" />
-              <path d="M3 5l9 7 9-7" />
-            </svg>
-            <p className="text-xl font-bold text-yellow-400 break-all no-underline">
-              Email
-            </p>
-            <p className="text-gray-300 text-sm break-all no-underline">
-              advocate.subhan@example.com
-            </p>
-          </div>
+              <p className="text-[11px] uppercase tracking-[0.2em] text-gray-500 mb-3">
+                {item.sub}
+              </p>
 
-          {/* COURT */}
-          <div className={cardStyle}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-10 w-10 text-yellow-400 mx-auto mb-3"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth="1.5"
-              stroke="currentColor"
-            >
-              <path d="M2 10h20L12 3 2 10z" />
-              <path d="M6 10v7m12-7v7M4 21h16" />
-            </svg>
-            <p className="text-xl font-bold text-yellow-400 break-all no-underline">
-              Court
-            </p>
-            <p className="text-gray-300 text-sm break-all no-underline">
-              Purnea District Civil Court
-            </p>
-          </div>
+              <p className="text-sm text-gray-300 break-all">{item.value}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
-    </div>
+    </section>
   );
 }

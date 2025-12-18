@@ -5,8 +5,7 @@ import Footer from "@/components/Footer";
 
 import Home from "@/pages/Home";
 import About from "@/pages/About";
-import Practice from "@/pages/Practice";
-import Testimonials from "@/pages/Testimonials";
+import Projects from "@/pages/Projects";
 import Contact from "@/pages/Contact";
 
 export default function App() {
@@ -43,12 +42,8 @@ export default function App() {
         <About />
       </section>
 
-      <section id="practice" className="min-h-screen border-b">
-        <Practice />
-      </section>
-
-      <section id="testimonials" className="min-h-screen border-b">
-        <Testimonials />
+      <section id="projects" className="min-h-screen border-b">
+        <Projects />
       </section>
 
       <section id="contact" className="min-h-screen border-b">

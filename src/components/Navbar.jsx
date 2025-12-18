@@ -1,115 +1,143 @@
+"use client";
+
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X } from "lucide-react";
+
+import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import avatarImg from "@/assets/avtar.jpg";
+
+const navItems = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "About" },
+  { id: "projects", label: "Projects" },
+  { id: "contact", label: "Contact" },
+];
 
 export default function Navbar({ activeSection }) {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav
-      className="fixed top-0 left-0 w-full z-50 py-2 backdrop-blur-md font-[Poppins]"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1589829085413-56de8ae18c73?auto=format&fit=crop&w=1900&q=80')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* DARK OVERLAY */}
-      <div className="absolute inset-0 bg-black bg-opacity-70"></div>
-
-      {/* NAV CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
-        {/* LEFT: PROFILE */}
-        <div className="flex items-center gap-3">
-          <img
-            src="https://scontent.fpat2-1.fna.fbcdn.net/v/t39.30808-6/489225569_2950005748502464_8449418859577968424_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=DwGvkzSqnjUQ7kNvwHzEF34&_nc_oc=AdmMYsIxFUf-vH5hjq9eRrXtNiqXm1T07LSB6kppmtPGCRKhjvqQWzUlrlbT_X10pJMeOa9eHbqSfbE2XMsNfyTi&_nc_zt=23&_nc_ht=scontent.fpat2-1.fna&_nc_gid=ftnGuzYwGFovDDJ7a2rhGw&oh=00_AflU5J4JXjpkNG0d5HKFNy_UpUt6RyTWgQ0SJ6YbgNDliQ&oe=693FE08E"
-            alt="Advocate Abdus Subhan"
-            className="h-12 w-12 rounded-full object-cover border border-yellow-500"
-          />
-          <div>
-            <h1 className="text-lg font-bold text-white leading-tight">
-              Abdul Subhan
-            </h1>
-            <p className="text-sm text-gray-300 -mt-1">Advocate</p>
-          </div>
-        </div>
-
-        {/* DESKTOP MENU */}
-        <div className="hidden md:flex gap-6 font-medium">
-          {[
-            { id: "home", label: "Home" },
-            { id: "about", label: "About" },
-            { id: "practice", label: "Practice" },
-            { id: "testimonials", label: "Testimonials" },
-            { id: "contact", label: "Contact" },
-          ].map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              className={
-                activeSection === item.id
-                  ? "text-yellow-400 font-semibold"
-                  : "text-gray-200 hover:text-yellow-400"
-              }
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
-
-        {/* MOBILE MENU BUTTON */}
-        <button className="md:hidden text-white" onClick={() => setOpen(!open)}>
-          <svg
-            className="h-8 w-8"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
+    <nav className="fixed top-0 z-50 w-full bg-black/95 backdrop-blur-2xl">
+      <div className="mx-auto max-w-7xl px-6">
+        <div className="flex h-16 items-center justify-between">
+          {/* LEFT PROFILE */}
+          <motion.div
+            initial={{ opacity: 0, x: -12 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4 }}
+            className="flex items-center gap-3"
           >
-            {open ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
+            <Avatar className="h-10 w-10 border border-orange-500/80">
+              <AvatarImage
+                src={avatarImg}
+                alt="Md Dilkash"
+                className="object-cover"
               />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M4 6h16M4 12h16m-7 6h7"
-              />
-            )}
-          </svg>
-        </button>
-      </div>
+              <AvatarFallback>MD</AvatarFallback>
+            </Avatar>
 
-      {/* THIN DIVIDER */}
-      <div className="relative z-10 w-full h-px bg-white/20"></div>
+            <div className="leading-snug">
+              <h1 className="text-[15px] font-medium tracking-[0.01em] text-white">
+                Md Dilkash Alam
+              </h1>
+              <p className="mt-[2px] text-[12px] font-normal tracking-[0.04em] text-gray-400">
+                Full Stack Software Engineer
+              </p>
+            </div>
+          </motion.div>
 
-      {/* MOBILE MENU */}
-      {open && (
-        <div className="relative z-10 md:hidden bg-black bg-opacity-80 backdrop-blur-md px-6 py-4 space-y-3">
-          {[
-            { id: "home", label: "Home" },
-            { id: "about", label: "About" },
-            { id: "practice", label: "Practice" },
-            { id: "testimonials", label: "Testimonials" },
-            { id: "contact", label: "Contact" },
-          ].map((item) => (
-            <a
-              key={item.id}
-              href={`#${item.id}`}
-              onClick={() => setOpen(false)}
-              className={
-                activeSection === item.id
-                  ? "block text-yellow-400 font-semibold"
-                  : "block text-gray-200 hover:text-yellow-400"
-              }
+          {/* DESKTOP MENU */}
+          <div className="hidden md:flex items-center gap-8">
+            {navItems.map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`text-sm font-medium tracking-tight transition-colors ${
+                  activeSection === item.id
+                    ? "text-orange-400"
+                    : "text-gray-400 hover:text-white"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          {/* MOBILE TOGGLE */}
+          <Sheet open={open} onOpenChange={setOpen}>
+            <SheetTrigger asChild>
+              <Button
+                size="icon"
+                className="md:hidden bg-white/10 text-white hover:bg-white/20 ring-1 ring-white/20"
+              >
+                <motion.div
+                  animate={{ rotate: open ? 90 : 0, scale: open ? 0.9 : 1 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {open ? <X size={20} /> : <Menu size={20} />}
+                </motion.div>
+              </Button>
+            </SheetTrigger>
+
+            <SheetContent
+              side="right"
+              className="p-0 bg-[#0a0a0a] border-l border-white/10 [&>button]:hidden"
             >
-              {item.label}
-            </a>
-          ))}
+              <AnimatePresence>
+                {open && (
+                  <motion.div
+                    initial={{ x: "100%" }}
+                    animate={{ x: 0 }}
+                    exit={{ x: "100%" }}
+                    transition={{ type: "spring", stiffness: 240, damping: 28 }}
+                    className="h-full px-8 py-8"
+                  >
+                    {/* HEADER */}
+                    <div className="mb-12 flex items-center justify-between">
+                      <span className="text-sm font-semibold tracking-tight text-white">
+                        Navigation
+                      </span>
+
+                      <motion.button
+                        onClick={() => setOpen(false)}
+                        whileHover={{ rotate: 90, scale: 1.1 }}
+                        whileTap={{ scale: 0.9 }}
+                        className="rounded-md p-2 text-white hover:bg-white/10"
+                      >
+                        <X size={20} />
+                      </motion.button>
+                    </div>
+
+                    {/* LINKS */}
+                    <div className="flex flex-col gap-7">
+                      {navItems.map((item, index) => (
+                        <motion.a
+                          key={item.id}
+                          href={`#${item.id}`}
+                          onClick={() => setOpen(false)}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.06 }}
+                          className={`text-lg font-medium tracking-tight ${
+                            activeSection === item.id
+                              ? "text-orange-400"
+                              : "text-gray-400"
+                          }`}
+                        >
+                          {item.label}
+                        </motion.a>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </SheetContent>
+          </Sheet>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

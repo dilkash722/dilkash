@@ -1,112 +1,119 @@
+"use client";
+
+import { motion } from "framer-motion";
+
 export default function About() {
   return (
-    <div
-      className="min-h-screen w-full relative flex items-center justify-center text-white px-6 py-24 font-[Poppins]"
-      style={{
-        backgroundImage:
-          "url('https://images.unsplash.com/photo-1699865574995-eb61e12d97bd?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Dark Layer */}
-      <div className="absolute inset-0 bg-black/80"></div>
+    <section className="relative min-h-screen bg-black text-white overflow-hidden flex items-center">
+      {/* TOP YELLOW / ORANGE GLOW */}
+      <motion.div
+        className="absolute -top-48 left-1/4 w-[520px] h-[520px] rounded-full
+                   bg-gradient-to-br from-yellow-400/30 via-orange-500/25 to-transparent
+                   blur-[180px] z-0"
+        animate={{ x: [0, 60, 0], y: [0, 40, 0] }}
+        transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
+      />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-4xl text-center">
-        {/* GOLD LINE TOP */}
-        <div className="w-20 h-1 bg-yellow-500 mx-auto mb-6 rounded-lg"></div>
+      <motion.div
+        className="absolute -top-64 right-1/4 w-[480px] h-[480px] rounded-full
+                   bg-gradient-to-bl from-orange-500/25 to-transparent
+                   blur-[160px] z-0"
+        animate={{ x: [0, -80, 0], y: [0, 60, 0] }}
+        transition={{ duration: 30, repeat: Infinity, ease: "easeInOut" }}
+      />
+
+      {/* BLACK FADE TO BOTTOM */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-transparent via-black/60 to-black z-[1]" />
+
+      {/* SUBTLE NOISE */}
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.04)_1px,transparent_0)] bg-[size:24px_24px] opacity-[0.08]" />
+
+      {/* CONTENT */}
+      <div
+        className="
+          relative z-10
+          max-w-7xl mx-auto px-6
+          pt-16 md:pt-20
+          pb-20 md:pb-24
+        "
+      >
+        {/* LABEL */}
+        <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4">
+          About
+        </p>
 
         {/* HEADING */}
-        <h1 className="text-4xl md:text-5xl font-extrabold tracking-wide mb-6">
-          About Advocate <span className="text-yellow-400">Abdul Subhan</span>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.15] mb-6">
+          Know More <br />
+          <span className="text-orange-400">About Me</span>
         </h1>
 
         {/* DESCRIPTION */}
-        <p className="text-lg md:text-xl text-gray-200 leading-relaxed mb-12">
-          Advocate Subhan is a highly committed legal professional providing
-          honest, ethical and result-driven legal services. With strong
-          expertise in{" "}
-          <span className="font-semibold text-white">
-            Criminal, Civil, Family & Property Law
-          </span>
-          , he ensures clarity, fairness and powerful representation for every
-          client.
+        <p className="max-w-3xl text-gray-300 text-sm sm:text-base leading-relaxed mb-12">
+          I am a passionate{" "}
+          <span className="text-white font-medium">Full Stack Developer</span>{" "}
+          focused on building modern, scalable and high-performance web
+          applications. I enjoy turning ideas into clean, user-friendly digital
+          products using industry-ready technologies and best development
+          practices.
         </p>
 
-        {/* GRID CARDS */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
-          {/* LLB CARD */}
-          <div className="p-6 rounded-2xl border border-yellow-500/30 bg-white/5 backdrop-blur-md shadow-lg hover:bg-white/10 transition-all">
-            {/* ICON - LAW DEGREE */}
-            <svg
-              className="w-12 h-12 text-yellow-400 mx-auto mb-3"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              viewBox="0 0 24 24"
+        {/* INFO CARDS — SAME AS PROJECTS */}
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mb-12">
+          {[
+            {
+              title: "Full Stack Development",
+              sub1: "Professional Course",
+              sub2: "Pentagon Space, Bangalore",
+            },
+            {
+              title: "Data Analytics",
+              sub1: "Certification Program",
+              sub2: "GeeksforGeeks",
+            },
+            {
+              title: "Education",
+              sub1: "MCA (Pursuing)",
+              sub2: "Manipal University Jaipur",
+            },
+          ].map((item, i) => (
+            <motion.div
+              key={i}
+              whileHover={{
+                y: -8,
+                boxShadow: "0 0 40px rgba(255,140,0,0.25)",
+              }}
+              className="
+                p-6 rounded-2xl
+                border border-white/40 ring-1 ring-white/10
+                bg-transparent
+                transition-all
+                hover:border-orange-400/50
+              "
             >
-              <path d="M2 7l10-5 10 5-10 5-10-5z" />
-              <path d="M4 10v5c0 2 3 4 8 4s8-2 8-4v-5" />
-              <path d="M12 12v9" />
-            </svg>
-
-            <h3 className="text-xl font-bold text-yellow-400">LLB</h3>
-            <p className="text-gray-200 text-sm">Bachelor of Law</p>
-            <p className="text-gray-400 text-xs mt-2">
-              Aligarh Muslim University
-            </p>
-          </div>
-
-          {/* MA CARD */}
-          <div className="p-6 rounded-2xl border border-yellow-500/30 bg-white/5 backdrop-blur-md shadow-lg hover:bg-white/10 transition-all">
-            {/* ICON - CERTIFICATE */}
-            <svg
-              className="w-12 h-12 text-yellow-400 mx-auto mb-3"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              viewBox="0 0 24 24"
-            >
-              <path d="M4 3h16v14H4z" />
-              <path d="M8 7h8" />
-              <path d="M8 11h5" />
-              <path d="M12 17l2 4 2-4" />
-            </svg>
-
-            <h3 className="text-xl font-bold text-yellow-400">M.A</h3>
-            <p className="text-gray-200 text-sm">Master of Arts</p>
-            <p className="text-gray-400 text-xs mt-2">Delhi University</p>
-          </div>
-
-          {/* BA CARD */}
-          <div className="p-6 rounded-2xl border border-yellow-500/30 bg-white/5 backdrop-blur-md shadow-lg hover:bg-white/10 transition-all">
-            {/* ICON - UNIVERSITY BUILDING */}
-            <svg
-              className="w-12 h-12 text-yellow-400 mx-auto mb-3"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              viewBox="0 0 24 24"
-            >
-              <path d="M3 10l9-6 9 6" />
-              <path d="M4 10h16v10H4z" />
-              <path d="M9 14h2" />
-              <path d="M13 14h2" />
-            </svg>
-
-            <h3 className="text-xl font-bold text-yellow-400">B.A</h3>
-            <p className="text-gray-200 text-sm">Bachelor of Arts</p>
-            <p className="text-gray-400 text-xs mt-2">Patna University</p>
-          </div>
+              <h3 className="text-base sm:text-lg font-semibold tracking-tight mb-1">
+                {item.title}
+              </h3>
+              <p className="text-sm text-gray-300">{item.sub1}</p>
+              <p className="text-xs text-gray-400 mt-2">{item.sub2}</p>
+            </motion.div>
+          ))}
         </div>
 
-        {/* FOOTER TEXT */}
-        <p className="text-gray-300 text-lg max-w-2xl mx-auto">
-          Committed to ensuring justice, dignity, and transparency for every
-          client through professional legal representation.
+        {/* EXTRA EDUCATION */}
+        <p className="max-w-3xl text-gray-400 text-sm sm:text-base leading-relaxed">
+          I completed my{" "}
+          <span className="text-white font-medium">
+            Bachelor of Computer Applications (BCA)
+          </span>{" "}
+          from Bhupendra Narayan Mandal University, Madhepura, and pursued{" "}
+          <span className="text-white font-medium">
+            Intermediate in Science (Mathematics)
+          </span>
+          . This academic foundation, combined with hands-on training, enables
+          me to build reliable and production-ready software solutions.
         </p>
       </div>
-    </div>
+    </section>
   );
 }

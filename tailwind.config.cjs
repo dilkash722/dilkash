@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        merri: ["Merriweather", "serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
       },
     },
   },
