@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Code2, BarChart3, GraduationCap } from "lucide-react";
 
 export default function About() {
   return (
@@ -65,16 +66,19 @@ export default function About() {
               title: "Full Stack Development",
               sub1: "Professional Course",
               sub2: "Pentagon Space, Bangalore",
+              icon: Code2,
             },
             {
               title: "Data Analytics",
               sub1: "Certification Program",
               sub2: "GeeksforGeeks",
+              icon: BarChart3,
             },
             {
               title: "Education",
               sub1: "MCA (Pursuing)",
               sub2: "Manipal University Jaipur",
+              icon: GraduationCap,
             },
           ].map((item, i) => (
             <motion.div
@@ -91,9 +95,14 @@ export default function About() {
                 hover:border-orange-400/50
               "
             >
-              <h3 className="text-base sm:text-lg font-semibold tracking-tight mb-1">
-                {item.title}
-              </h3>
+              {/* TITLE WITH ICON (ONLY ADDITION) */}
+              <div className="flex items-center gap-2 mb-1">
+                <item.icon className="w-4 h-4 text-orange-400" />
+                <h3 className="text-base sm:text-lg font-semibold tracking-tight">
+                  {item.title}
+                </h3>
+              </div>
+
               <p className="text-sm text-gray-300">{item.sub1}</p>
               <p className="text-xs text-gray-400 mt-2">{item.sub2}</p>
             </motion.div>
