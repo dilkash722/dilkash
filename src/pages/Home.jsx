@@ -14,19 +14,30 @@ import {
   Mail,
   FolderOpen,
   FileCode2,
+  Github,
+  Cloud,
 } from "lucide-react";
 
 const skills = [
   { name: "Next.js", icon: Code2 },
   { name: "HTML & CSS", icon: FileCode2 },
+  { name: "Tailwind CSS", icon: Wind },
   { name: "React.js", icon: Braces },
   { name: "JavaScript", icon: Cpu },
-  { name: "Tailwind CSS", icon: Wind },
+  { name: "TypeScript", icon: Braces },
+
+  // backend
+  { name: "Node.js", icon: Server },
+  { name: "Express.js", icon: Server },
+
+  // database
   { name: "MongoDB", icon: Database },
   { name: "MySQL", icon: Database },
   { name: "PostgreSQL", icon: Database },
-  { name: "Python", icon: Server },
-  { name: "TypeScript", icon: Braces },
+
+  // tools / deployment
+  { name: "GitHub", icon: Github },
+  { name: "Vercel", icon: Cloud },
 ];
 
 export default function Home() {

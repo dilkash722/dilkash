@@ -16,7 +16,7 @@ const projects = [
     title: "Guest House System",
     sub: "Booking & Operations",
     skills: [
-      { name: "Web App", icon: Globe },
+      { name: "Next.js", icon: Server },
       { name: "Database", icon: Database },
     ],
   },
