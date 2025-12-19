@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Projects from "@/pages/Projects";
+import Testimonials from "@/pages/Testimonial";
 import Contact from "@/pages/Contact";
 
 export default function App() {
@@ -44,6 +45,10 @@ export default function App() {
 
       <section id="projects" className="min-h-screen border-b">
         <Projects />
+      </section>
+
+      <section id="testimonials" className="min-h-screen border-b">
+        <Testimonials />
       </section>
 
       <section id="contact" className="min-h-screen border-b">

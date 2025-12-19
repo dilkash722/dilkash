@@ -13,6 +13,7 @@ const navItems = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "projects", label: "Projects" },
+  { id: "testimonials", label: "Testimonials" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -97,9 +98,14 @@ export default function Navbar({ activeSection }) {
                   >
                     {/* HEADER */}
                     <div className="mb-12 flex items-center justify-between">
-                      <span className="text-sm font-semibold tracking-tight text-white">
-                        Navigation
-                      </span>
+                      <div className="leading-tight">
+                        <p className="text-[15px] font-semibold tracking-tight text-white">
+                          Md Dilkash Alam
+                        </p>
+                        <p className="mt-[2px] text-[12px] font-medium tracking-[0.20em] text-white">
+                          Full Stack Software Engineer
+                        </p>
+                      </div>
 
                       <motion.button
                         onClick={() => setOpen(false)}
@@ -110,7 +116,6 @@ export default function Navbar({ activeSection }) {
                         <X size={20} />
                       </motion.button>
                     </div>
-
                     {/* LINKS */}
                     <div className="flex flex-col gap-7">
                       {navItems.map((item, index) => (
