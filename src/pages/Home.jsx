@@ -104,9 +104,9 @@ export default function Home() {
           <p className="text-base sm:text-lg md:text-xl font-medium text-gray-300 mb-6">
             <Typewriter
               words={[
-                "Frontend Engineer",
-                "Backend Engineer",
-                "Full Stack Software Engineer",
+                "Web Application Specialist",
+                "Complete Web Applications",
+                "Production Ready Deployment",
               ]}
               loop
               cursor
@@ -119,7 +119,7 @@ export default function Home() {
 
           {/* DESCRIPTION */}
           <p className="max-w-xl text-gray-400 text-sm sm:text-base leading-relaxed mb-9">
-            I build modern, scalable and high-performance web applications with
+            I build modern, scalable,high-performance web applications with
             clean UI and production-ready backend systems.
           </p>
 

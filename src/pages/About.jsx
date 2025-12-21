@@ -52,11 +52,13 @@ export default function About() {
         {/* DESCRIPTION */}
         <p className="max-w-3xl text-gray-300 text-sm sm:text-base leading-relaxed mb-12">
           I am a passionate{" "}
-          <span className="text-white font-medium">Full Stack Developer</span>{" "}
-          focused on building modern, scalable and high-performance web
-          applications. I enjoy turning ideas into clean, user-friendly digital
-          products using industry-ready technologies and best development
-          practices.
+          <span className="text-white font-medium">
+            Full Stack Software Engineer
+          </span>{" "}
+          focused on building modern, scalable, and high-performance web
+          applications. I specialize in turning ideas into reliable,
+          user-friendly digital products using production-ready technologies and
+          best development practices.
         </p>
 
         {/* INFO CARDS — SAME AS PROJECTS */}
@@ -111,11 +113,15 @@ export default function About() {
 
         {/* EXTRA EDUCATION */}
         <p className="max-w-3xl text-gray-400 text-sm sm:text-base leading-relaxed">
-          I completed my{" "}
+          I am currently pursuing{" "}
+          <span className="text-white font-medium">
+            Master of Computer Applications (MCA)
+          </span>{" "}
+          and have completed my{" "}
           <span className="text-white font-medium">
             Bachelor of Computer Applications (BCA)
           </span>{" "}
-          from Bhupendra Narayan Mandal University, Madhepura, and pursued{" "}
+          along with{" "}
           <span className="text-white font-medium">
             Intermediate in Science (Mathematics)
           </span>
