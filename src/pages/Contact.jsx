@@ -104,9 +104,7 @@ export default function Contact() {
                   </h3>
                 </div>
 
-                <p className="text-[11px] uppercase tracking-[0.2em] text-gray-500 mb-4">
-                  {contact.sub}
-                </p>
+                <p className="text-sm text-gray-300 mb-4">{contact.sub}</p>
 
                 <p className="text-sm text-gray-300 break-all">
                   {contact.value}

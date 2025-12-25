@@ -32,8 +32,8 @@ export default function Footer() {
             Md Dilkash Alam
           </p>
 
-          <p className="text-[10.5px] uppercase tracking-[0.32em] text-gray-500">
-            Full Stack Software Engineer
+          <p className="text-[10.5px] font-medium tracking-[0.20em] text-gray-500">
+            Web & Software Systems Developer
           </p>
 
           <p className="text-[10.5px] tracking-wide text-gray-600">

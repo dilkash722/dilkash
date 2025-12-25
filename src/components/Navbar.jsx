@@ -12,6 +12,7 @@ import avatarImg from "@/assets/avtar.jpg";
 const navItems = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
+  { id: "how-i-work", label: "How I Work" },
   { id: "projects", label: "Projects" },
   { id: "testimonials", label: "Testimonials" },
   { id: "contact", label: "Contact" },
@@ -45,7 +46,7 @@ export default function Navbar({ activeSection }) {
                 Md Dilkash Alam
               </h1>
               <p className="mt-[2px] text-[12px] font-normal tracking-[0.04em] text-gray-400">
-                Full Stack Software Engineer
+                Web & Software Systems Developer
               </p>
             </div>
           </motion.div>
@@ -102,8 +103,8 @@ export default function Navbar({ activeSection }) {
                         <p className="text-[15px] font-semibold tracking-tight text-white">
                           Md Dilkash Alam
                         </p>
-                        <p className="mt-[2px] text-[12px] font-medium tracking-[0.20em] text-white">
-                          Full Stack Software Engineer
+                        <p className="mt-[2px] text-[12px] font-medium tracking-[0.16em] text-white">
+                          Web & Software Systems Developer
                         </p>
                       </div>
 
@@ -116,6 +117,7 @@ export default function Navbar({ activeSection }) {
                         <X size={20} />
                       </motion.button>
                     </div>
+
                     {/* LINKS */}
                     <div className="flex flex-col gap-7">
                       {navItems.map((item, index) => (

@@ -96,17 +96,17 @@ export default function Home() {
 
           {/* HEADING */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.15] mb-5">
-            Full Stack <br />
-            <span className="text-orange-400">Software Engineer</span>
+            Web & Software <br />
+            <span className="text-orange-400">Systems Developer</span>
           </h1>
 
           {/* ROLE */}
           <p className="text-base sm:text-lg md:text-xl font-medium text-gray-300 mb-6">
             <Typewriter
               words={[
-                "Web Application Specialist",
-                "Complete Web Applications",
-                "Production Ready Deployment",
+                "Building systems, not just websites",
+                "End-to-end web & software systems",
+                "Business-focused digital solutions",
               ]}
               loop
               cursor
@@ -119,8 +119,9 @@ export default function Home() {
 
           {/* DESCRIPTION */}
           <p className="max-w-xl text-gray-400 text-sm sm:text-base leading-relaxed mb-9">
-            I build modern, scalable,high-performance web applications with
-            clean UI and production-ready backend systems.
+            I design and build end-to-end web & software systems that help
+            businesses run smoothly, from clean UI to reliable, production-ready
+            backends.
           </p>
 
           {/* SKILLS */}
@@ -199,7 +200,7 @@ export default function Home() {
             Md Dilkash
           </h3>
           <p className="text-xs sm:text-sm text-gray-400">
-            Full Stack Software Engineer
+            Web & Software Systems Developer
           </p>
         </div>
       </div>

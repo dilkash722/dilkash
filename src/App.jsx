@@ -8,6 +8,7 @@ import About from "@/pages/About";
 import Projects from "@/pages/Projects";
 import Testimonials from "@/pages/Testimonial";
 import Contact from "@/pages/Contact";
+import HowIWork from "@/pages/HowIWork";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -41,6 +42,10 @@ export default function App() {
 
       <section id="about" className="min-h-screen border-b">
         <About />
+      </section>
+
+      <section id="how-i-work" className="min-h-screen border-b">
+        <HowIWork />
       </section>
 
       <section id="projects" className="min-h-screen border-b">
