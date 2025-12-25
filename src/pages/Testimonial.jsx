@@ -82,7 +82,7 @@ export default function Testimonials() {
         "
       >
         {/* INNER WRAPPER — STRONG RIGHT SHIFT */}
-        <div className="ml-6 sm:ml-10 md:ml-14">
+        <div className="ml-0 md:ml-14">
           {/* LABEL */}
           <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4">
             Testimonials

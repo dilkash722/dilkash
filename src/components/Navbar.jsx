@@ -100,10 +100,10 @@ export default function Navbar({ activeSection }) {
                     {/* HEADER */}
                     <div className="mb-12 flex items-center justify-between">
                       <div className="leading-tight">
-                        <p className="text-[15px] font-semibold tracking-tight text-white">
+                        <p className="text-lg font-semibold tracking-tight text-white">
                           Md Dilkash Alam
                         </p>
-                        <p className="mt-[2px] text-[12px] font-medium tracking-[0.16em] text-white">
+                        <p className="mt-[2px] text-sm font-medium tracking-[0.16em] text-gray-400">
                           Web & Software Systems Developer
                         </p>
                       </div>
