@@ -26,13 +26,27 @@ export default function About() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.04)_1px,transparent_0)] bg-[size:24px_24px] opacity-[0.08]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-20 md:pb-24">
-        <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4">
+        <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4 ml-[6px]">
           About
         </p>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.15] mb-6">
-          Know More <br />
-          <span className="text-orange-400">About Me</span>
+        <h1
+          className="
+           text-[2.1rem]
+           sm:text-[2.6rem]
+           md:text-[3.4rem]
+           lg:text-[4.2rem]
+           xl:text-[5.4rem]
+           font-extrabold
+           tracking-[-0.045em]
+           leading-[1.1]
+           md:leading-[1.02]
+           mb-6
+           "
+        >
+          Know More
+          <br />
+          <span className="block text-orange-400">About Me</span>
         </h1>
 
         <p className="max-w-3xl text-gray-400 text-sm sm:text-base leading-relaxed mb-12">

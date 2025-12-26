@@ -84,14 +84,28 @@ export default function Testimonials() {
         {/* INNER WRAPPER — STRONG RIGHT SHIFT */}
         <div className="ml-0 md:ml-14">
           {/* LABEL */}
-          <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4">
+          <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4 ml-[6px]">
             Testimonials
           </p>
 
           {/* HEADING */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.15] mb-6">
-            Client <br />
-            <span className="text-orange-400">Feedback</span>
+          <h1
+            className="
+           text-[2.1rem]
+           sm:text-[2.6rem]
+           md:text-[3.4rem]
+           lg:text-[4.2rem]
+           xl:text-[5.4rem]
+           font-extrabold
+           tracking-[-0.045em]
+           leading-[1.1]
+           md:leading-[1.02]
+           mb-6
+           "
+          >
+            Client
+            <br />
+            <span className="block text-orange-400">Feedback</span>
           </h1>
 
           {/* DESCRIPTION */}

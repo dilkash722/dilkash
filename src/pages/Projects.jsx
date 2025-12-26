@@ -101,14 +101,28 @@ export default function Projects() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-20 md:pb-24">
         <div className="ml-auto max-w-6xl">
           {/* LABEL */}
-          <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4">
+          <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4 ml-[6px]">
             Projects
           </p>
 
           {/* HEADING */}
-          <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.15] mb-6">
-            Selected <br />
-            <span className="text-orange-400">Projects</span>
+          <h1
+            className="
+           text-[2.1rem]
+           sm:text-[2.6rem]
+           md:text-[3.4rem]
+           lg:text-[4.2rem]
+           xl:text-[5.4rem]
+           font-extrabold
+           tracking-[-0.045em]
+           leading-[1.1]
+           md:leading-[1.02]
+           mb-6
+           "
+          >
+            Selected
+            <br />
+            <span className="block text-orange-400">Projects</span>
           </h1>
 
           {/* DESCRIPTION */}

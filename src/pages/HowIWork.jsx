@@ -113,13 +113,27 @@ export default function Methodology() {
     <section className="relative min-h-screen bg-black text-white flex items-center">
       <div className="max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-20 md:pb-24">
         <div className="ml-auto max-w-6xl">
-          <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4">
+          <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4 ml-[6px]">
             Methodology
           </p>
 
-          <h1 className="text-3xl sm:text-4xl md:text-5xl xl:text-6xl font-bold tracking-tight leading-[1.15] mb-6">
-            Project <br />
-            <span className="text-orange-400">Methodology</span>
+          <h1
+            className="
+           text-[2.1rem]
+           sm:text-[2.6rem]
+           md:text-[3.4rem]
+           lg:text-[4.2rem]
+           xl:text-[5.4rem]
+           font-extrabold
+           tracking-[-0.045em]
+           leading-[1.1]
+           md:leading-[1.02]
+           mb-6
+           "
+          >
+            Project
+            <br />
+            <span className="block text-orange-400">Methodology</span>
           </h1>
 
           <p className="max-w-3xl text-gray-300 text-sm sm:text-base leading-relaxed mb-12">
