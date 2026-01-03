@@ -185,3 +185,35 @@ footer {
   border-top: none !important;
   border-bottom: none !important;
 }
+
+/* ===================================== */
+/* Desktop-like layout in mobile desktop-mode */
+/* ===================================== */
+
+/* 1. Fix viewport height mismatch */
+@media (max-width: 1024px) {
+  .min-h-screen,
+  .h-screen,
+  [style*="100vh"] {
+    min-height: auto !important;
+    height: auto !important;
+  }
+}
+
+/* 2. Force desktop container behavior */
+@media (max-width: 1024px) {
+  main,
+  section {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* 3. Remove ONLY navbar divider (not global borders) */
+@media (max-width: 1024px) {
+  nav {
+    border-bottom: none !important;
+    box-shadow: none !important;
+  }
+}
