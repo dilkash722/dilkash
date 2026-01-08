@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 import Navbar from "@/components/Navbar";
@@ -8,6 +10,8 @@ import About from "@/pages/About";
 import Projects from "@/pages/Projects";
 import Testimonials from "@/pages/Testimonial";
 import HowIWork from "@/pages/HowIWork";
+
+import ContactController from "@/components/ContactController";
 
 export default function App() {
   const [activeSection, setActiveSection] = useState("home");
@@ -27,7 +31,6 @@ export default function App() {
     );
 
     sections.forEach((sec) => observer.observe(sec));
-
     return () => observer.disconnect();
   }, []);
 
@@ -55,9 +58,10 @@ export default function App() {
         <Testimonials />
       </section>
 
-      {/* ❌ Contact section REMOVED */}
-
       <Footer />
+
+      {/* 🔥 CONTACT FLOW CONTROLLER */}
+      <ContactController />
     </div>
   );
 }

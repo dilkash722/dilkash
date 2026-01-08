@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import emailjs from "emailjs-com";
+import emailjs from "@emailjs/browser";
 import {
   X,
   User,
@@ -14,9 +14,7 @@ import {
   Loader2,
 } from "lucide-react";
 
-import ContactSuccess from "./ContactSuccess";
 import { validateContactForm } from "@/utils/validateForm";
-
 import {
   Select as ShadcnSelect,
   SelectTrigger,
@@ -25,16 +23,15 @@ import {
   SelectItem,
 } from "@/components/ui/select";
 
-export default function ContactModal({ open, onClose }) {
+export default function ContactModal({ open, onClose, onSuccess }) {
   const [loading, setLoading] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
   const [errors, setErrors] = useState({});
 
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
-    projectType: "Web Application",
+    projectType: "",
     message: "",
   });
 
@@ -51,7 +48,6 @@ export default function ContactModal({ open, onClose }) {
       return;
     }
 
-    setErrors({});
     setLoading(true);
 
     try {
@@ -62,19 +58,8 @@ export default function ContactModal({ open, onClose }) {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
-      setShowSuccess(true);
-
-      setTimeout(() => {
-        setShowSuccess(false);
-        onClose();
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          projectType: "Web Application",
-          message: "",
-        });
-      }, 9000);
+      onClose();
+      onSuccess?.(formData.name);
     } catch (err) {
       console.error("EmailJS Error:", err);
     } finally {
@@ -86,17 +71,41 @@ export default function ContactModal({ open, onClose }) {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
         >
+          {/* ===== PROJECTS STYLE BG ===== */}
           <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 40, scale: 0.96 }}
+            className="absolute -bottom-48 left-1/4 w-[520px] h-[520px] rounded-full
+            bg-gradient-to-tr from-yellow-400/30 via-orange-500/25 to-transparent
+            blur-[180px]"
+            animate={{ x: [0, 80, 0], y: [0, -60, 0] }}
+            transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          <motion.div
+            className="absolute -bottom-64 right-1/4 w-[480px] h-[480px] rounded-full
+            bg-gradient-to-tr from-orange-500/25 to-transparent
+            blur-[160px]"
+            animate={{ x: [0, -100, 0], y: [0, -80, 0] }}
+            transition={{ duration: 32, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          {/* FADE + NOISE */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.04)_1px,transparent_0)] bg-[size:24px_24px] opacity-[0.08]" />
+
+          {/* ===== MODAL ===== */}
+          <motion.div
+            initial={{ y: 40, scale: 0.96, opacity: 0 }}
+            animate={{ y: 0, scale: 1, opacity: 1 }}
+            exit={{ y: 40, scale: 0.96, opacity: 0 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="relative w-full max-w-3xl mx-4 p-6 sm:p-8 rounded-2xl bg-black border border-white/20 ring-1 ring-white/10"
+            className="relative z-10 w-full max-w-4xl mx-4 rounded-2xl
+            bg-black/70 backdrop-blur border border-white/20 ring-1 ring-white/10
+            p-6 sm:p-10"
           >
             <button
               onClick={onClose}
@@ -105,78 +114,70 @@ export default function ContactModal({ open, onClose }) {
               <X />
             </button>
 
-            {showSuccess ? (
-              <ContactSuccess />
-            ) : (
-              <>
-                <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-3">
-                  Contact
-                </p>
+            <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-3">
+              Contact
+            </p>
 
-                <h2 className="text-2xl sm:text-3xl font-extrabold mb-4 text-gray-200">
-                  Let’s <span className="text-orange-400">Work Together</span>
-                </h2>
+            <h2 className="text-2xl sm:text-3xl font-extrabold mb-6 text-gray-200">
+              Let’s <span className="text-orange-400">Work Together</span>
+            </h2>
 
-                <p className="text-gray-400 text-sm mb-6 max-w-xl">
-                  Share your project details and requirements.
-                </p>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Input
+                  icon={User}
+                  placeholder="Your name"
+                  value={formData.name}
+                  onChange={(v) => handleChange("name", v)}
+                  error={errors.name}
+                  required
+                />
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <Input
-                      icon={User}
-                      placeholder="Your name"
-                      value={formData.name}
-                      onChange={(v) => handleChange("name", v)}
-                      error={errors.name}
-                      required
-                    />
+                <Input
+                  icon={Mail}
+                  placeholder="Email address"
+                  value={formData.email}
+                  onChange={(v) => handleChange("email", v)}
+                  error={errors.email}
+                  required
+                />
 
-                    <Input
-                      icon={Mail}
-                      placeholder="Email address"
-                      value={formData.email}
-                      onChange={(v) => handleChange("email", v)}
-                      error={errors.email}
-                      required
-                    />
+                <Input
+                  icon={Phone}
+                  placeholder="Phone (optional)"
+                  value={formData.phone}
+                  onChange={(v) => handleChange("phone", v)}
+                  error={errors.phone}
+                />
 
-                    <Input
-                      icon={Phone}
-                      placeholder="Phone (optional)"
-                      value={formData.phone}
-                      onChange={(v) => handleChange("phone", v)}
-                      error={errors.phone}
-                    />
+                <ProjectTypeSelect
+                  value={formData.projectType}
+                  onChange={(v) => handleChange("projectType", v)}
+                />
+              </div>
 
-                    <ProjectTypeSelect
-                      value={formData.projectType}
-                      onChange={(v) => handleChange("projectType", v)}
-                    />
-                  </div>
+              <Textarea
+                value={formData.message}
+                onChange={(v) => handleChange("message", v)}
+                error={errors.message}
+                required
+              />
 
-                  <Textarea
-                    value={formData.message}
-                    onChange={(v) => handleChange("message", v)}
-                    error={errors.message}
-                    required
-                  />
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-orange-500 hover:bg-orange-600 text-sm font-medium disabled:opacity-60"
-                  >
-                    {loading ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <Send className="w-4 h-4" />
-                    )}
-                    {loading ? "Sending..." : "Send Request"}
-                  </button>
-                </form>
-              </>
-            )}
+              <button
+                type="submit"
+                disabled={loading}
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-full
+                bg-orange-500 hover:bg-orange-600 text-black text-sm font-medium
+                disabled:opacity-60"
+              >
+                {loading ? (
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                ) : (
+                  <Send className="w-4 h-4" />
+                )}
+                {loading ? "Sending..." : "Send Request"}
+              </button>
+            </form>
           </motion.div>
         </motion.div>
       )}
@@ -184,7 +185,7 @@ export default function ContactModal({ open, onClose }) {
   );
 }
 
-/* ---------- SMALL COMPONENTS ---------- */
+/* ================= SMALL COMPONENTS ================= */
 
 function Input({ icon: Icon, placeholder, value, onChange, error, required }) {
   return (
@@ -206,23 +207,24 @@ function Input({ icon: Icon, placeholder, value, onChange, error, required }) {
 
 function ProjectTypeSelect({ value, onChange }) {
   return (
-    <div className="flex items-center gap-2 border border-white/20 rounded-lg px-3 py-1.5">
-      <Briefcase className="w-4 h-4 text-orange-400" />
+    <ShadcnSelect value={value} onValueChange={onChange}>
+      <SelectTrigger className="w-full flex items-center gap-2 border border-white/20 rounded-lg px-3 h-[42px] bg-transparent text-sm text-white">
+        <Briefcase className="w-4 h-4 text-orange-400 shrink-0" />
+        <SelectValue placeholder="Choose your project type" />
+      </SelectTrigger>
 
-      <ShadcnSelect value={value} onValueChange={onChange}>
-        <SelectTrigger className="bg-transparent border-0 h-9 px-0 text-sm text-white focus:ring-0">
-          <SelectValue />
-        </SelectTrigger>
-
-        <SelectContent className="bg-black border border-white/20 text-white">
-          <SelectItem value="Website">Website</SelectItem>
-          <SelectItem value="Web Application">Web Application</SelectItem>
-          <SelectItem value="Mobile App">Mobile App</SelectItem>
-          <SelectItem value="SaaS / System">SaaS / System</SelectItem>
-          <SelectItem value="Consultation">Consultation</SelectItem>
-        </SelectContent>
-      </ShadcnSelect>
-    </div>
+      <SelectContent
+        position="popper"
+        sideOffset={6}
+        className="z-[9999] bg-black border border-white/20 text-white text-sm"
+      >
+        <SelectItem value="Website">Website</SelectItem>
+        <SelectItem value="Web Application">Web Application</SelectItem>
+        <SelectItem value="Mobile App">Mobile App</SelectItem>
+        <SelectItem value="SaaS / System">SaaS / System</SelectItem>
+        <SelectItem value="Consultation">Consultation</SelectItem>
+      </SelectContent>
+    </ShadcnSelect>
   );
 }
 
