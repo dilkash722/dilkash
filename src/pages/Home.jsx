@@ -162,7 +162,7 @@ export default function Home() {
               <motion.a
                 whileHover={{ y: -4 }}
                 whileTap={{ scale: 0.95 }}
-                href="https://wa.me/91XXXXXXXXXX?text=Hello%20I%20want%20to%20discuss%20a%20project"
+                href="https://wa.me/917763937638?text=Hello%20I%20want%20to%20discuss%20a%20project"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 px-9 py-3.5 rounded-lg border border-white/40 ring-1 ring-white/20 text-[0.85rem] font-medium tracking-wide hover:bg-white/5 hover:border-green-500/60"
