@@ -4,7 +4,7 @@ A modern, production-ready developer portfolio built with **React + Vite**, focu
 clean architecture, performance, and real-world system design.
 
 ## 🔗 Live Preview
-👉 https://your-portfolio-url.com
+👉 https://mddilkash.vercel.app/
 
 ## 🧠 About Me
 I am a **Web & Software Systems Developer** who builds complete systems —  
