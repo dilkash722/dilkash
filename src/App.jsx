@@ -7,7 +7,6 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Projects from "@/pages/Projects";
 import Testimonials from "@/pages/Testimonial";
-import Contact from "@/pages/Contact";
 import HowIWork from "@/pages/HowIWork";
 
 export default function App() {
@@ -56,9 +55,7 @@ export default function App() {
         <Testimonials />
       </section>
 
-      <section id="contact" className="min-h-screen border-b">
-        <Contact />
-      </section>
+      {/* ❌ Contact section REMOVED */}
 
       <Footer />
     </div>

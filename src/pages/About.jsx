@@ -63,19 +63,19 @@ export default function About() {
             {
               title: "System-First Development",
               sub1: "End-to-end ownership",
-              sub2: "From planning to deployment",
+              sub2: "From planning and system design to deployment and maintenance.",
               icon: Code2,
             },
             {
               title: "Business-Focused Solutions",
               sub1: "Practical workflows",
-              sub2: "Built for daily operations",
+              sub2: "Built for real-world, daily business operations.",
               icon: BarChart3,
             },
             {
               title: "Clean & Reliable Delivery",
               sub1: "Stable architecture",
-              sub2: "Production-ready systems",
+              sub2: "Scalable, maintainable, and production-ready systems.",
               icon: ShieldCheck,
             },
           ].map((item, i) => (
@@ -110,21 +110,25 @@ export default function About() {
           ))}
         </div>
 
-        <p className="max-w-3xl text-gray-400 text-sm sm:text-base leading-relaxed">
-          I am currently pursuing{" "}
+        <p className="max-w-3xl text-gray-400 text-sm sm:text-base leading-relaxed mb-12">
+          I am in the final year of{" "}
           <span className="text-white font-medium">
             Master of Computer Applications (MCA)
           </span>{" "}
-          and have completed my{" "}
+          and hold a{" "}
           <span className="text-white font-medium">
             Bachelor of Computer Applications (BCA)
           </span>{" "}
-          along with{" "}
+          with a background in Science (Mathematics). I completed a{" "}
           <span className="text-white font-medium">
-            Intermediate in Science (Mathematics)
-          </span>
-          . This academic foundation, combined with hands-on experience, enables
-          me to deliver reliable and production-grade software solutions.
+            9-month Full Stack Development program
+          </span>{" "}
+          at PentagonSpace, Bengaluru, and an{" "}
+          <span className="text-white font-medium">
+            8-week Data Analytics course
+          </span>{" "}
+          from GeeksforGeeks. I also earned a Python certification from
+          HackerRank.
         </p>
       </div>
     </section>
