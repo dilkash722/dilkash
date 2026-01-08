@@ -1,16 +1,34 @@
-# React + Vite
+# Md Dilkash Alam – Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, production-ready developer portfolio built with **React + Vite**, focused on
+clean architecture, performance, and real-world system design.
 
-Currently, two official plugins are available:
+## 🔗 Live Preview
+👉 https://your-portfolio-url.com
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧠 About Me
+I am a **Web & Software Systems Developer** who builds complete systems —  
+not just UI screens.
 
-## React Compiler
+My focus areas:
+- Scalable Web Applications
+- System-oriented thinking
+- Clean UI + solid backend logic
+- Real production workflows
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🚀 Tech Stack
+- React (Vite)
+- Tailwind CSS
+- Framer Motion
+- EmailJS
+- Lucide Icons
+- Shadcn UI
 
-## Expanding the ESLint configuration
+## ✨ Features
+- Modern animated UI
+- Project showcase with real systems
+- Contact flow with validation + success modal
+- Production-level component separation
+- Secure environment variable handling
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📂 Project Structure
