@@ -54,8 +54,8 @@ export default function About() {
           <span className="text-white font-medium">
             end-to-end web & software systems
           </span>{" "}
-          with a focus on clean architecture, practical workflows, and reliable,
-          production-ready solutions that solve real business problems.
+          with clean architecture and practical workflows, delivering reliable,
+          production-ready solutions for real business problems.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mb-12">
@@ -114,21 +114,21 @@ export default function About() {
           I am in the final year of{" "}
           <span className="text-white font-medium">
             Master of Computer Applications (MCA)
-          </span>{" "}
-          and hold a{" "}
+          </span>
+          , with a{" "}
           <span className="text-white font-medium">
             Bachelor of Computer Applications (BCA)
           </span>{" "}
-          with a background in Science (Mathematics). I completed a{" "}
+          and a Science background in Mathematics. I completed a{" "}
           <span className="text-white font-medium">
             9-month Full Stack Development program
           </span>{" "}
-          at PentagonSpace, Bengaluru, and an{" "}
+          in Bengaluru, along with an{" "}
           <span className="text-white font-medium">
             8-week Data Analytics course
           </span>{" "}
-          from GeeksforGeeks. I also earned a Python certification from
-          HackerRank.
+          and a{" "}
+          <span className="text-white font-medium">Python certification</span>.
         </p>
       </div>
     </section>

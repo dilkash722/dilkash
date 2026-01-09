@@ -72,8 +72,8 @@ export default function Home() {
                 whitespace-nowrap
               "
             >
-              <span className="block">Web & Software</span>
-              <span className="block text-orange-400">Systems Developer</span>
+              <span className="block">Full Stack</span>
+              <span className="block text-orange-400">Product Engineer</span>
             </h1>
 
             {/* TAGLINE */}
@@ -81,8 +81,8 @@ export default function Home() {
               <Typewriter
                 words={[
                   "Building systems, not just websites",
-                  "End-to-end web & software systems",
-                  "Business-focused digital solutions",
+                  "End-to-end product & software systems",
+                  "Business-driven digital solutions",
                 ]}
                 loop
                 cursor

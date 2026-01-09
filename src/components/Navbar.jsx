@@ -56,7 +56,7 @@ export default function Navbar({ activeSection }) {
                 Md Dilkash Alam
               </h1>
               <p className="mt-[2px] text-[12px] tracking-[0.04em] text-gray-400">
-                Web & Software Systems Developer
+                Full Stack Product Engineer
               </p>
             </div>
           </motion.div>
@@ -128,7 +128,7 @@ export default function Navbar({ activeSection }) {
                           Md Dilkash Alam
                         </p>
                         <p className="mt-[2px] text-sm tracking-[0.16em] text-gray-400">
-                          Web & Software Systems Developer
+                          Full Stack Product Engineer
                         </p>
                       </div>
 
