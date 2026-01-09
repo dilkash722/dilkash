@@ -195,7 +195,7 @@ export default function Home() {
                 Md Dilkash Alam
               </h3>
               <p className="text-[0.75rem] text-gray-400 tracking-wide mt-1">
-                Web & Software Systems Developer
+                Full Stack Product Engineer
               </p>
             </div>
           </div>
