@@ -11,7 +11,6 @@ export default function ContactController() {
   const [successOpen, setSuccessOpen] = useState(false);
   const [userName, setUserName] = useState("");
 
-  // 🔥 GLOBAL EVENT LISTENER (Navbar → Contact)
   useEffect(() => {
     const openContact = () => {
       setSuccessOpen(false);
@@ -24,18 +23,22 @@ export default function ContactController() {
 
   return (
     <>
-      {/* ================= CONTACT MODAL ================= */}
-      <ContactModal
-        open={contactOpen}
-        onClose={() => setContactOpen(false)}
-        onSuccess={(name) => {
-          setUserName(name);
-          setContactOpen(false);
-          setSuccessOpen(true);
-        }}
-      />
+      {/* CONTACT MODAL */}
+      <AnimatePresence mode="wait">
+        {contactOpen && (
+          <ContactModal
+            open
+            onClose={() => setContactOpen(false)}
+            onSuccess={(name) => {
+              setUserName(name);
+              setContactOpen(false); // close first
+              setSuccessOpen(true); // ⚡ instant success (no delay)
+            }}
+          />
+        )}
+      </AnimatePresence>
 
-      {/* ================= SUCCESS MODAL ================= */}
+      {/* SUCCESS MODAL */}
       <AnimatePresence>
         {successOpen && (
           <ContactSuccess
