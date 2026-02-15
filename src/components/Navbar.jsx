@@ -56,7 +56,7 @@ export default function Navbar({ activeSection }) {
                 Md Dilkash Alam
               </h1>
               <p className="mt-[2px] text-[12px] tracking-[0.04em] text-gray-400">
-                Full Stack Product Engineer
+                Founder & Lead Mentor, Nadilix
               </p>
             </div>
           </motion.div>
@@ -84,7 +84,7 @@ export default function Navbar({ activeSection }) {
                 >
                   {item.label}
                 </a>
-              )
+              ),
             )}
           </div>
 
@@ -128,7 +128,7 @@ export default function Navbar({ activeSection }) {
                           Md Dilkash Alam
                         </p>
                         <p className="mt-[2px] text-sm tracking-[0.16em] text-gray-400">
-                          Full Stack Product Engineer
+                          Founder & Lead Mentor, Nadilix
                         </p>
                       </div>
 
@@ -175,7 +175,7 @@ export default function Navbar({ activeSection }) {
                           >
                             {item.label}
                           </motion.a>
-                        )
+                        ),
                       )}
                     </div>
                   </motion.div>

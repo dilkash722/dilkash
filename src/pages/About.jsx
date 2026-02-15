@@ -6,6 +6,7 @@ import { Code2, BarChart3, ShieldCheck } from "lucide-react";
 export default function About() {
   return (
     <section className="relative min-h-screen bg-black text-white overflow-hidden flex items-center">
+      {/* BACKGROUND GLOWS */}
       <motion.div
         className="absolute -top-48 left-1/4 w-[520px] h-[520px] rounded-full
         bg-gradient-to-br from-yellow-400/30 via-orange-500/25 to-transparent
@@ -27,108 +28,94 @@ export default function About() {
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-20 md:pb-24">
         <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4 ml-[6px]">
-          About
+          About Me
         </p>
 
+        {/* SHORT HEADING */}
         <h1
           className="
-           text-[2.1rem]
-           sm:text-[2.6rem]
-           md:text-[3.4rem]
-           lg:text-[4.2rem]
-           xl:text-[5.4rem]
-           font-extrabold
-           tracking-[-0.045em]
-           leading-[1.1]
-           md:leading-[1.02]
-           mb-6
-           "
+            text-3xl
+            sm:text-4xl
+            md:text-5xl
+            lg:text-6xl
+            font-bold
+            tracking-tight
+            leading-tight
+            mb-6
+          "
         >
-          Know More
-          <br />
-          <span className="block text-orange-400">About Me</span>
+          Founder <span className="text-orange-400">Nadilix</span>
         </h1>
 
-        <p className="max-w-3xl text-gray-400 text-sm sm:text-base leading-relaxed mb-12">
-          I design and build{" "}
-          <span className="text-white font-medium">
-            end-to-end web & software systems
-          </span>{" "}
-          with clean architecture and practical workflows, delivering reliable,
-          production-ready solutions for real business problems.
+        {/* MAIN PARAGRAPH */}
+        <p className="max-w-3xl text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed mb-12">
+          I am Md Dilkash, founder and lead mentor at Nadilix. My focus is on
+          building structured learning systems, guiding developers through
+          practical project-based training, and delivering reliable digital
+          solutions aligned with modern industry standards.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-4xl mb-12">
+        {/* CORE AREAS */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mb-16">
           {[
             {
-              title: "System-First Development",
-              sub1: "End-to-end ownership",
-              sub2: "From planning and system design to deployment and maintenance.",
+              title: "Technical Leadership",
+              sub1: "Guided execution",
+              sub2: "Leading structured projects and mentoring learners through real workflows.",
               icon: Code2,
             },
             {
-              title: "Business-Focused Solutions",
-              sub1: "Practical workflows",
-              sub2: "Built for real-world, daily business operations.",
+              title: "Structured Learning",
+              sub1: "Practical systems",
+              sub2: "Designing hands-on training paths focused on modern development practices.",
               icon: BarChart3,
             },
             {
-              title: "Clean & Reliable Delivery",
-              sub1: "Stable architecture",
-              sub2: "Scalable, maintainable, and production-ready systems.",
+              title: "Product-Oriented Thinking",
+              sub1: "Industry mindset",
+              sub2: "Building scalable, maintainable, and production-ready digital solutions.",
               icon: ShieldCheck,
             },
           ].map((item, i) => (
             <motion.div
               key={i}
               whileHover={{
-                y: -8,
-                boxShadow: "0 0 40px rgba(255,140,0,0.25)",
+                y: -10,
+                boxShadow: "0 0 60px rgba(255,140,0,0.25)",
               }}
               className="
-                w-full
-                p-5 rounded-2xl
-                bg-transparent
-                border border-white/40
-                ring-1 ring-white/10
-                transition-all
-                hover:border-orange-400/50
-              "
+        w-full
+        p-8
+        rounded-2xl
+        bg-transparent
+        border border-white/30
+        ring-1 ring-white/10
+        transition-all
+        hover:border-orange-400/60
+      "
             >
-              <div className="flex items-center gap-2 mb-2">
-                <item.icon className="w-4 h-4 text-orange-400" />
-                <h3 className="text-base font-semibold tracking-tight">
+              <div className="flex items-center gap-3 mb-4">
+                <item.icon className="w-6 h-6 text-orange-400" />
+                <h3 className="text-lg md:text-xl font-semibold tracking-tight">
                   {item.title}
                 </h3>
               </div>
 
-              <p className="text-sm text-gray-300">{item.sub1}</p>
-              <p className="text-xs text-gray-400 mt-2 leading-relaxed">
+              <p className="text-base text-gray-300 font-medium">{item.sub1}</p>
+
+              <p className="text-sm md:text-base text-gray-400 mt-3 leading-relaxed">
                 {item.sub2}
               </p>
             </motion.div>
           ))}
         </div>
 
-        <p className="max-w-3xl text-gray-400 text-sm sm:text-base leading-relaxed mb-12">
-          I am in the final year of{" "}
-          <span className="text-white font-medium">
-            Master of Computer Applications (MCA)
-          </span>
-          , with a{" "}
-          <span className="text-white font-medium">
-            Bachelor of Computer Applications (BCA)
-          </span>{" "}
-          and a Science background in Mathematics. I completed a{" "}
-          <span className="text-white font-medium">
-            9-month Full Stack Development program
-          </span>{" "}
-          in Bengaluru, along with an{" "}
-          <span className="text-white font-medium">
-            8-week Data Analytics course
-          </span>{" "}
-          and a{" "}
-          <span className="text-white font-medium">Python certification</span>.
+        {/* FINAL PARAGRAPH */}
+        <p className="max-w-3xl text-gray-300 text-base sm:text-lg md:text-xl leading-relaxed">
+          With academic foundations in BCA and MCA and professional training in
+          full stack and data technologies, I combine technical depth with
+          mentorship. My goal is to build capable developers and create
+          meaningful digital impact through structured systems.
         </p>
       </div>
     </section>

@@ -51,7 +51,7 @@ const testimonials = [
 export default function Testimonials() {
   return (
     <section className="relative min-h-screen bg-black text-white overflow-hidden flex items-center">
-      {/* TOP GLOW */}
+      {/* TOP GLOW (UNCHANGED) */}
       <motion.div
         className="absolute -top-48 left-1/4 w-[520px] h-[520px] rounded-full
                    bg-gradient-to-br from-yellow-400/30 via-orange-500/25 to-transparent
@@ -73,90 +73,83 @@ export default function Testimonials() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.04)_1px,transparent_0)] bg-[size:24px_24px] opacity-[0.08]" />
 
       {/* CONTENT */}
-      <div
-        className="
-          relative z-10
-          max-w-7xl mx-auto px-6
-          pt-16 md:pt-20
-          pb-20 md:pb-24
-        "
-      >
-        {/* INNER WRAPPER — STRONG RIGHT SHIFT */}
-        <div className="ml-0 md:ml-14">
-          {/* LABEL */}
-          <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4 ml-[6px]">
-            Testimonials
-          </p>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-20 md:pb-24">
+        {/* LABEL */}
+        <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4">
+          Testimonials
+        </p>
 
-          {/* HEADING */}
-          <h1
-            className="
-           text-[2.1rem]
-           sm:text-[2.6rem]
-           md:text-[3.4rem]
-           lg:text-[4.2rem]
-           xl:text-[5.4rem]
-           font-extrabold
-           tracking-[-0.045em]
-           leading-[1.1]
-           md:leading-[1.02]
-           mb-6
-           "
-          >
-            Client
-            <br />
-            <span className="block text-orange-400">Feedback</span>
-          </h1>
+        {/* HEADING */}
+        <h1
+          className="
+    text-3xl
+    sm:text-4xl
+    md:text-5xl
+    lg:text-6xl
+    font-bold
+    tracking-tight
+    leading-tight
+    mb-6
+  "
+        >
+          Client <span className="text-orange-400">Reviews</span>
+        </h1>
 
-          {/* DESCRIPTION */}
-          <p className="max-w-3xl text-gray-300 text-sm sm:text-base leading-relaxed mb-12">
-            Real feedback from clients after delivering reliable,
-            business-focused web and software systems.
-          </p>
+        {/* DESCRIPTION */}
+        <p className="max-w-3xl text-gray-300 text-base sm:text-lg leading-relaxed mb-14">
+          Genuine feedback from clients after delivering structured, reliable
+          and production-ready web solutions.
+        </p>
 
-          {/* TESTIMONIAL CARDS */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl">
-            {testimonials.map((item, index) => (
-              <motion.div
-                key={index}
-                whileHover={{
-                  y: -8,
-                  boxShadow: "0 0 40px rgba(255,140,0,0.25)",
-                }}
-                className="
-                  p-6 rounded-2xl
-                  border border-white/40 ring-1 ring-white/10
-                  bg-transparent
-                  transition-all
-                  hover:border-orange-400/50
-                "
-              >
-                {/* TITLE + ICON */}
-                <div className="flex items-center gap-2 mb-1">
-                  <MessageSquareQuote className="w-4 h-4 text-orange-400" />
-                  <h3 className="text-base sm:text-lg font-semibold tracking-tight">
-                    {item.title}
-                  </h3>
-                </div>
+        {/* CARDS */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {testimonials.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: index * 0.05 }}
+              whileHover={{
+                y: -8,
+                boxShadow: "0 0 40px rgba(255,140,0,0.15)",
+              }}
+              className="
+                p-7
+                rounded-2xl
+                border border-white/25
+                ring-1 ring-white/10
+                transition-all
+                hover:border-orange-400/60
+              "
+            >
+              {/* PROJECT TITLE */}
+              <div className="flex items-center gap-3 mb-3">
+                <MessageSquareQuote className="w-5 h-5 text-orange-400" />
+                <h3 className="text-lg font-semibold tracking-tight">
+                  {item.title}
+                </h3>
+              </div>
 
-                {/* SUB */}
-                <p className="text-sm text-gray-300 mb-4">{item.sub}</p>
+              {/* SUBTITLE */}
+              <p className="text-gray-400 text-sm mb-4">{item.sub}</p>
 
-                {/* CLIENT */}
-                <div className="flex items-center gap-2 mb-4">
+              {/* FEEDBACK */}
+              <p className="text-gray-300 text-base leading-relaxed mb-6">
+                “{item.feedback}”
+              </p>
+
+              {/* CLIENT */}
+              <div className="flex items-center gap-3 pt-4 border-t border-white/10">
+                <div className="p-2 rounded-full bg-orange-500/10 border border-orange-500/20">
                   <User className="w-4 h-4 text-orange-400" />
-                  <span className="text-sm font-medium text-gray-300">
-                    {item.client}
-                  </span>
                 </div>
-
-                {/* FEEDBACK */}
-                <p className="text-sm text-gray-300 leading-relaxed">
-                  “{item.feedback}”
-                </p>
-              </motion.div>
-            ))}
-          </div>
+                <span className="text-sm font-medium text-gray-300">
+                  {item.client}
+                </span>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
