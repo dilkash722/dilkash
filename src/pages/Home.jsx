@@ -1,222 +1,146 @@
-"use client";
-
-import { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import {
-  Mail,
-  MessageCircle,
-  CheckCircle,
-  ArrowRight,
-  Code2,
-  Rocket,
-  Shield,
-} from "lucide-react";
-import ContactModal from "../components/ContactModal";
-import avatarImg from "@/assets/avtar.jpg";
+import { ArrowUpRight, Play, Calendar } from "lucide-react"; // npm i lucide-react
 
-export default function Home() {
-  const [contactOpen, setContactOpen] = useState(false);
-
+const Home = () => {
   return (
-    <>
-      <section className="relative min-h-screen bg-black text-white overflow-hidden font-sans">
-        {/* ORIGINAL BACKGROUND OVERLAY */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black via-black to-transparent z-[1]" />
+    <div className="bg-[#050505] text-[#fafafa] min-h-screen font-sans selection:bg-white selection:text-black overflow-x-hidden">
+      {/* Dynamic Background */}
+      <div className="fixed inset-0 z-0">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-zinc-900/40 blur-[120px] rounded-full" />
+        <div className="absolute bottom-[-5%] right-[-5%] w-[40%] h-[40%] bg-zinc-800/20 blur-[100px] rounded-full" />
+      </div>
 
-        {/* LEFT GLOW */}
-        <motion.div
-          className="absolute -bottom-48 left-1/4 w-[520px] h-[520px] rounded-full
-          bg-gradient-to-tr from-yellow-400/25 via-orange-500/20 to-transparent
-          blur-[180px]"
-          animate={{ x: [0, 80, 0], y: [0, -60, 0] }}
-          transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        {/* RIGHT GLOW */}
-        <motion.div
-          className="absolute -bottom-64 right-1/4 w-[480px] h-[480px] rounded-full
-          bg-gradient-to-tr from-orange-500/20 to-transparent
-          blur-[160px]"
-          animate={{ x: [0, -100, 0], y: [0, -80, 0] }}
-          transition={{ duration: 32, repeat: Infinity, ease: "easeInOut" }}
-        />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 sm:pt-20 md:pt-24 pb-16 sm:pb-20">
-          <div className="grid lg:grid-cols-12 gap-12 items-center">
-            {/* LEFT CONTENT */}
-            <div className="lg:col-span-7 text-left">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-orange-500/30 bg-orange-500/5 text-orange-400 text-[10px] sm:text-xs font-semibold tracking-wide mb-6 sm:mb-8"
-              >
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-orange-500"></span>
-                </span>
-                MD DILKASH · FOUNDER & LEAD MENTOR
-              </motion.div>
-
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[1] md:leading-[0.9] mb-5 sm:mb-6"
-              >
-                Nadilix
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="text-base sm:text-lg md:text-2xl text-gray-400 font-medium leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0"
-              >
-                Nadilix is a{" "}
-                <span className="text-white">
-                  Software Training and Development Centre
-                </span>{" "}
-                focused on practical learning, real projects, and
-                production-ready systems.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.3 }}
-                className="grid sm:grid-cols-2 gap-3 sm:gap-4 mb-10 max-w-lg mx-auto lg:mx-0 text-sm sm:text-base"
-              >
-                {[
-                  {
-                    icon: <Code2 size={18} />,
-                    text: "Live Project Based Learning",
-                  },
-                  {
-                    icon: <Rocket size={18} />,
-                    text: "Modern Full Stack Dev",
-                  },
-                  {
-                    icon: <Shield size={18} />,
-                    text: "Industry Standard Workflow",
-                  },
-                  {
-                    icon: <CheckCircle size={18} />,
-                    text: "Deployment Ready Skills",
-                  },
-                ].map((item, i) => (
-                  <div
-                    key={i}
-                    className="flex items-center gap-3 text-gray-300"
-                  >
-                    <span className="text-orange-500">{item.icon}</span>
-                    {item.text}
-                  </div>
-                ))}
-              </motion.div>
-
-              {/* BUTTONS */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
-              >
-                <button
-                  onClick={() => setContactOpen(true)}
-                  className="group relative px-6 sm:px-8 py-3 sm:py-4 bg-orange-500 hover:bg-orange-600 text-black font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2"
-                >
-                  <Mail size={18} />
-                  Enquire Now
-                  <ArrowRight
-                    size={18}
-                    className="group-hover:translate-x-1 transition-transform"
-                  />
-                </button>
-
-                <a
-                  href="https://wa.me/917763937638"
-                  className="px-6 sm:px-8 py-3 sm:py-4 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl font-semibold transition-all flex items-center justify-center gap-2"
-                >
-                  <MessageCircle size={18} className="text-green-400" />
-                  WhatsApp Support
-                </a>
-              </motion.div>
-            </div>
-
-            {/* RIGHT IMAGE SECTION */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end mt-12 lg:mt-0">
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.8 }}
-                className="relative flex flex-col items-center justify-center"
-              >
-                <motion.div
-                  className="absolute w-[380px] h-[380px] md:w-[500px] md:h-[500px] rounded-full bg-orange-500/20 blur-[120px]"
-                  animate={{ x: [0, 40, -40, 0], y: [0, -30, 30, 0] }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                />
-
-                <motion.div
-                  className="absolute w-72 h-72 md:w-96 md:h-96 rounded-full border border-orange-500/20"
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 30,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                />
-
-                <div className="relative w-56 h-56 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border border-white/10 shadow-2xl bg-neutral-900">
-                  <img
-                    src={avatarImg}
-                    alt="Md Dilkash - Founder Nadilix"
-                    className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                </div>
-
-                <div className="mt-6 text-center">
-                  <p className="text-orange-500 font-semibold text-lg sm:text-xl tracking-tight">
-                    Md Dilkash
-                  </p>
-                  <p className="text-white/60 text-[10px] sm:text-xs uppercase tracking-wider">
-                    Founder · Nadilix Software Training
-                  </p>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-
-          {/* STATS STRIP */}
+      <main className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 pt-24 md:pt-40 pb-20">
+        {/* Label Section */}
+        <div className="overflow-hidden mb-6">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="mt-10 pt-6 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-6 text-center md:text-left"
+            initial={{ y: "100%" }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="flex items-center gap-3"
           >
-            {[
-              { label: "Learning Model", val: "Project Based" },
-              { label: "Core Focus", val: "Full Stack Development" },
-              { label: "Workflow", val: "Industry Standard" },
-              { label: "Mentorship", val: "Personal Guidance" },
-            ].map((stat, i) => (
-              <div key={i} className="space-y-1">
-                <p className="text-orange-500 font-semibold text-lg md:text-xl">
-                  {stat.val}
-                </p>
-                <p className="text-gray-500 text-xs uppercase tracking-wider">
-                  {stat.label}
-                </p>
-              </div>
-            ))}
+            <span className="h-[1px] w-8 bg-indigo-500" />
+            <span className="text-[10px] md:text-xs uppercase tracking-[0.5em] font-semibold text-zinc-500">
+              Founder & Lead Trainer • Nadilix
+            </span>
           </motion.div>
         </div>
-      </section>
 
-      <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
-    </>
+        {/* Hero Title */}
+        <section className="relative">
+          <motion.h1
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            className="text-[15vw] md:text-[10vw] font-black leading-[0.8] tracking-tighter uppercase mb-8"
+          >
+            MD DILKASH
+          </motion.h1>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-16 items-start">
+            {/* Left Side: Pitch */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 1 }}
+              className="lg:col-span-7"
+            >
+              <p className="text-xl md:text-4xl font-light leading-snug text-zinc-400">
+                I build{" "}
+                <span className="text-white font-medium italic underline decoration-indigo-500/50 underline-offset-8">
+                  systems
+                </span>{" "}
+                and <span className="text-white font-medium">careers</span>. At
+                Nadilix, hum complex industry skills ko decode karke unhe
+                execution-ready modules mein convert karte hain.
+              </p>
+            </motion.div>
+
+            {/* Right Side: Quick Stats */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8 }}
+              className="lg:col-span-5 grid grid-cols-2 gap-4 w-full"
+            >
+              <div className="p-8 border border-zinc-800/50 bg-zinc-900/10 rounded-[2rem] backdrop-blur-sm hover:border-zinc-700 transition-colors group">
+                <p className="text-3xl md:text-5xl font-black mb-1 group-hover:text-indigo-400 transition-colors">
+                  10K+
+                </p>
+                <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">
+                  Learners
+                </p>
+              </div>
+              <div className="p-8 border border-zinc-800/50 bg-zinc-900/10 rounded-[2rem] backdrop-blur-sm hover:border-zinc-700 transition-colors group">
+                <p className="text-3xl md:text-5xl font-black mb-1 group-hover:text-indigo-400 transition-colors">
+                  08+
+                </p>
+                <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">
+                  Expertises
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Updated CTA Section with Icons & Modern Buttons */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1 }}
+          className="flex flex-col sm:flex-row gap-6 mt-20"
+        >
+          {/* Primary Button: Solid with Icon Animation */}
+          <button className="group relative flex items-center justify-center gap-3 px-10 py-6 bg-white text-black font-black uppercase text-xs tracking-[0.2em] overflow-hidden rounded-full transition-all active:scale-95">
+            <span className="relative z-10">Enquiry Form</span>
+            <motion.div
+              className="relative z-10"
+              whileHover={{ rotate: 45, x: 2, y: -2 }}
+            >
+              <ArrowUpRight size={18} strokeWidth={3} />
+            </motion.div>
+            <div className="absolute inset-0 bg-indigo-500 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16, 1, 0.3, 1]" />
+          </button>
+
+          {/* Secondary Button: Outline with Fill Hover */}
+          <button className="group relative flex items-center justify-center gap-3 px-10 py-6 border-2 border-zinc-800 rounded-full text-xs uppercase tracking-[0.2em] font-black hover:border-white transition-all overflow-hidden active:scale-95">
+            <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+              Book Workshop
+            </span>
+            <Calendar
+              className="relative z-10 group-hover:text-black transition-colors duration-300"
+              size={18}
+            />
+            <div className="absolute inset-0 bg-white translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-[0.16, 1, 0.3, 1]" />
+          </button>
+        </motion.div>
+
+        {/* Skill Ticker */}
+        <div className="mt-40 border-t border-zinc-900/50 pt-12">
+          <div className="flex flex-wrap gap-x-16 gap-y-8 opacity-20 hover:opacity-50 transition-opacity duration-1000">
+            {["UI/UX", "Full Stack", "Leadership", "Branding", "Strategy"].map(
+              (skill) => (
+                <div key={skill} className="flex items-center gap-4">
+                  <div className="h-1.5 w-1.5 bg-indigo-500 rounded-full" />
+                  <span className="text-sm md:text-lg font-black uppercase tracking-[0.3em]">
+                    {skill}
+                  </span>
+                </div>
+              ),
+            )}
+          </div>
+        </div>
+      </main>
+
+      {/* Side Label */}
+      <div className="fixed right-10 bottom-24 hidden xl:block z-20">
+        <p className="rotate-90 origin-right text-[10px] tracking-[1.2em] text-zinc-700 uppercase font-black">
+          Nadilix • Elite Training • 2024
+        </p>
+      </div>
+    </div>
   );
-}
+};
+
+export default Home;

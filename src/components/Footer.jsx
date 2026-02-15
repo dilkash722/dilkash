@@ -2,130 +2,179 @@
 
 import { motion } from "framer-motion";
 import {
+  ArrowUpRight,
   Github,
+  Instagram,
   Linkedin,
-  Twitter,
-  ExternalLink,
-  Code2,
-  Cpu,
+  Mail,
+  MapPin,
 } from "lucide-react";
 
 export default function Footer() {
-  const socialLinks = [
-    { icon: <Github size={18} />, href: "https://github.com", label: "GitHub" },
-    {
-      icon: <Linkedin size={18} />,
-      href: "https://linkedin.com",
-      label: "LinkedIn",
-    },
-    {
-      icon: <Twitter size={18} />,
-      href: "https://twitter.com",
-      label: "Twitter",
-    },
-  ];
+  const fadeInUp = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  };
 
   return (
-    <footer className="relative bg-black text-white pt-24 pb-12 overflow-hidden border-t border-white/5">
-      {/* Subtle Glow Line */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-[1px] bg-gradient-to-r from-transparent via-orange-500/50 to-transparent" />
+    <footer className="relative bg-[#050505] text-[#fafafa] pt-24 pb-12 overflow-hidden border-t border-zinc-900">
+      {/* BACKGROUND SYNCED GLOW */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
+        <div className="absolute bottom-[-10%] left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-indigo-900/30 blur-[150px] rounded-full" />
+      </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 mb-20">
-          {/* LEFT: PERSONAL IDENTITY */}
-          <div className="lg:col-span-5 text-center lg:text-left">
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              className="text-4xl font-black tracking-tight mb-4"
-            >
-              Md Dilkash Alam<span className="text-orange-500">.</span>
-            </motion.h2>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
+        {/* TOP SECTION: CALL TO ACTION */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-24 items-start">
+          <motion.div {...fadeInUp} className="lg:col-span-8">
+            <h2 className="text-[10vw] md:text-[6vw] font-black leading-[0.9] tracking-tighter uppercase mb-10">
+              LET'S ARCHITECT <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-700">
+                YOUR VISION.
+              </span>
+            </h2>
+            <button className="group flex items-center gap-4 px-10 py-5 bg-white text-black font-black uppercase text-xs tracking-[0.4em] rounded-full hover:bg-indigo-600 hover:text-white transition-all duration-500 active:scale-95">
+              Get in Touch{" "}
+              <ArrowUpRight
+                size={20}
+                strokeWidth={3}
+                className="group-hover:rotate-45 transition-transform"
+              />
+            </button>
+          </motion.div>
 
-            <p className="text-orange-400 font-semibold uppercase tracking-[0.2em] text-xs mb-6">
-              Founder · Nadilix
-            </p>
-
-            <p className="text-gray-400 text-lg max-w-md leading-relaxed mb-8 mx-auto lg:mx-0">
-              Building structured software systems and guiding learners through
-              practical, real-world development with clean architecture and
-              production-ready workflows.
-            </p>
-
-            <div className="flex justify-center lg:justify-start gap-4">
-              {socialLinks.map((social, i) => (
-                <a
-                  key={i}
-                  href={social.href}
-                  target="_blank"
-                  className="w-12 h-12 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:bg-orange-500 hover:text-black hover:-translate-y-1 transition-all duration-300"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {/* MIDDLE: CORE FOCUS */}
-          <div className="lg:col-span-4 flex flex-col items-center lg:items-start">
-            <h4 className="text-white font-bold mb-8 uppercase tracking-widest text-xs">
-              Focus Areas
-            </h4>
-
-            <div className="grid grid-cols-2 gap-x-8 gap-y-4 text-gray-400">
-              {[
-                "Full Stack Development",
-                "System Design",
-                "Project-Based Learning",
-                "Live Coding Sessions",
-                "Clean Architecture",
-                "Industry Workflow",
-              ].map((skill) => (
-                <div
-                  key={skill}
-                  className="flex items-center gap-2 text-sm hover:text-white transition-colors"
-                >
-                  <div className="w-1 h-1 bg-orange-500 rounded-full" />
-                  {skill}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* RIGHT: CONTACT */}
-          <div className="lg:col-span-3 flex flex-col items-center lg:items-end">
-            <div className="w-full p-8 rounded-[2rem] bg-gradient-to-br from-white/[0.03] to-transparent border border-white/10 text-center lg:text-left">
-              <p className="text-white font-bold mb-2">Let’s Connect</p>
-              <p className="text-gray-500 text-sm mb-6">
-                Open to collaborations, training, and structured development
-                projects.
+          <motion.div
+            {...fadeInUp}
+            transition={{ delay: 0.2 }}
+            className="lg:col-span-4 space-y-10"
+          >
+            <div>
+              <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4">
+                Location
               </p>
+              <div className="flex items-center gap-3 text-zinc-300 group cursor-pointer">
+                <MapPin size={18} className="text-indigo-500" />
+                <span className="text-sm font-bold uppercase tracking-widest group-hover:text-white transition-colors">
+                  Patna, Bihar, India
+                </span>
+              </div>
+            </div>
 
+            <div>
+              <p className="text-zinc-500 text-[10px] font-black uppercase tracking-[0.4em] mb-4">
+                Contact
+              </p>
+              <div className="flex items-center gap-3 text-zinc-300 group cursor-pointer">
+                <Mail size={18} className="text-indigo-500" />
+                <span className="text-sm font-bold uppercase tracking-widest group-hover:text-white transition-colors">
+                  hello@nadilix.com
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+
+        {/* MIDDLE SECTION: QUICK LINKS & SOCIALS */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-12 py-16 border-y border-zinc-900">
+          <div className="space-y-6">
+            <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.5em]">
+              Navigation
+            </p>
+            <ul className="space-y-4 text-xs font-bold uppercase tracking-[0.2em] text-zinc-400">
+              <li>
+                <a
+                  href="#home"
+                  className="hover:text-indigo-500 transition-colors"
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#about"
+                  className="hover:text-indigo-500 transition-colors"
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#projects"
+                  className="hover:text-indigo-500 transition-colors"
+                >
+                  Work
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div className="space-y-6">
+            <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.5em]">
+              Social
+            </p>
+            <div className="flex gap-6">
               <a
-                href="mailto:yourmail@example.com"
-                className="inline-flex items-center gap-2 text-orange-500 font-bold hover:gap-3 transition-all"
+                href="#"
+                className="p-3 bg-zinc-900 rounded-full hover:bg-indigo-600 transition-all text-white group"
               >
-                Get in Touch <ExternalLink size={16} />
+                <Linkedin size={18} />
               </a>
+              <a
+                href="#"
+                className="p-3 bg-zinc-900 rounded-full hover:bg-indigo-600 transition-all text-white group"
+              >
+                <Instagram size={18} />
+              </a>
+              <a
+                href="#"
+                className="p-3 bg-zinc-900 rounded-full hover:bg-indigo-600 transition-all text-white group"
+              >
+                <Github size={18} />
+              </a>
+            </div>
+          </div>
+
+          <div className="col-span-2 space-y-6 md:text-right">
+            <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.5em]">
+              Newsletter
+            </p>
+            <div className="flex md:justify-end">
+              <input
+                type="email"
+                placeholder="EMAIL ADDRESS"
+                className="bg-transparent border-b border-zinc-800 py-3 px-2 text-[10px] font-black tracking-widest focus:outline-none focus:border-indigo-500 w-full max-w-xs transition-colors"
+              />
             </div>
           </div>
         </div>
 
-        {/* BOTTOM STRIP */}
-        <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-4 text-xs text-gray-500 uppercase tracking-widest font-medium">
-            <span>Personal Portfolio</span>
-            <span className="w-1 h-1 bg-gray-700 rounded-full" />
-            <span>Md Dilkash Alam</span>
-          </div>
+        {/* BOTTOM GIANT BRANDING */}
+        <div className="pt-20">
+          <motion.h2
+            initial={{ y: 100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[22vw] font-black leading-none tracking-tighter text-zinc-900 select-none"
+          >
+            NADILIX
+          </motion.h2>
+        </div>
 
-          <div className="flex gap-8 text-xs text-gray-500 uppercase tracking-widest">
-            <p className="flex items-center gap-2">
-              <Code2 size={12} className="text-orange-500" /> Modern Stack
-            </p>
-            <p className="flex items-center gap-2">
-              <Cpu size={12} className="text-orange-500" /> Optimized Systems
-            </p>
+        {/* COPYRIGHT INFO */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-10">
+          <p className="text-[9px] font-bold uppercase tracking-[0.5em] text-zinc-600 text-center">
+            © 2024 MD DILKASH ALAM • ALL RIGHTS RESERVED
+          </p>
+          <div className="flex gap-8 text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500">
+            <span className="hover:text-indigo-500 cursor-pointer transition-colors">
+              Privacy
+            </span>
+            <span className="hover:text-indigo-500 cursor-pointer transition-colors">
+              Terms
+            </span>
           </div>
         </div>
       </div>

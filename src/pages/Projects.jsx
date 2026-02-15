@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import {
   School,
-  Home,
+  Home as HomeIcon,
   Activity,
   Utensils,
   Scale,
@@ -12,30 +12,31 @@ import {
   Server,
   Database,
   Layout,
+  ArrowUpRight,
 } from "lucide-react";
 
 const projects = [
   {
     title: "School Website",
-    desc: "A modern and responsive school website built to improve communication, accessibility, and institutional presence.",
+    desc: "A modern institutional platform built to improve digital presence and student-teacher accessibility.",
     icon: School,
     tools: [
       { name: "React", icon: Code2 },
-      { name: "Tailwind CSS", icon: Layout },
+      { name: "Tailwind", icon: Layout },
     ],
   },
   {
     title: "Guest House System",
-    desc: "A structured booking and management system designed to streamline daily operations and reservations.",
-    icon: Home,
+    desc: "A structured booking engine designed to streamline daily operations and real-time reservations.",
+    icon: HomeIcon,
     tools: [
       { name: "Next.js", icon: Server },
-      { name: "Database", icon: Database },
+      { name: "PostgreSQL", icon: Database },
     ],
   },
   {
     title: "Cricket Score App",
-    desc: "A real-time scoring application for managing matches, teams, and live updates efficiently.",
+    desc: "Real-time scoring engine for managing matches, team stats, and live dashboard updates.",
     icon: Activity,
     tools: [
       { name: "React", icon: Code2 },
@@ -44,157 +45,152 @@ const projects = [
   },
   {
     title: "Food Delivery App",
-    desc: "An end-to-end ordering and management system with admin workflows and order tracking features.",
+    desc: "End-to-end management system with dedicated admin workflows and live order tracking.",
     icon: Utensils,
     tools: [
       { name: "Next.js", icon: Server },
-      { name: "Database", icon: Database },
+      { name: "MongoDB", icon: Database },
     ],
   },
   {
     title: "Advocate Portfolio",
-    desc: "A professional portfolio platform focused on clarity, credibility, and client trust.",
+    desc: "A professional legal platform focused on high-end credibility and client trust architecture.",
     icon: Scale,
     tools: [
       { name: "React", icon: Code2 },
-      { name: "UI Design", icon: Layout },
+      { name: "Framer", icon: Layout },
     ],
   },
   {
     title: "Inventory System",
-    desc: "A scalable inventory and stock management solution built for structured business operations.",
+    desc: "Scalable stock management solution built for complex and structured business operations.",
     icon: Boxes,
     tools: [
       { name: "Next.js", icon: Server },
-      { name: "Database", icon: Database },
+      { name: "Prisma", icon: Database },
     ],
   },
 ];
 
 export default function Projects() {
+  const fadeInUp = {
+    initial: { opacity: 0, y: 40 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true },
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  };
+
   return (
-    <section className="relative min-h-screen bg-black text-white overflow-hidden flex items-center">
-      {/* ORIGINAL BLACK BASE */}
-      <div className="absolute inset-0 bg-black z-0" />
+    <section
+      id="projects"
+      className="relative min-h-screen bg-[#050505] text-[#fafafa] py-24 md:py-40 overflow-hidden"
+    >
+      {/* HERO-SYNCED BG GLOWS (Indigo + Zinc) */}
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
+        <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-indigo-900/20 blur-[150px] rounded-full" />
+        <div className="absolute bottom-[-5%] right-[-5%] w-[500px] h-[500px] bg-zinc-800/20 blur-[120px] rounded-full" />
+      </div>
 
-      {/* ORANGE GLOW BACKGROUND */}
-      <motion.div
-        className="absolute -bottom-48 left-1/4 w-[520px] h-[520px] rounded-full
-        bg-gradient-to-tr from-orange-500/30 via-yellow-400/25 to-transparent
-        blur-[180px] z-0"
-        animate={{ x: [0, 80, 0], y: [0, -60, 0] }}
-        transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
-      />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 w-full">
+        {/* TOP LABEL - SYNC WITH HERO/ABOUT */}
+        <motion.div {...fadeInUp} className="flex items-center gap-4 mb-12">
+          <span className="h-[2px] w-12 bg-indigo-500" />
+          <span className="text-[10px] md:text-xs uppercase tracking-[0.6em] font-black text-zinc-500">
+            Selected Works
+          </span>
+        </motion.div>
 
-      <motion.div
-        className="absolute -bottom-64 right-1/4 w-[480px] h-[480px] rounded-full
-        bg-gradient-to-tr from-orange-500/25 to-transparent
-        blur-[160px] z-0"
-        animate={{ x: [0, -100, 0], y: [0, -80, 0] }}
-        transition={{ duration: 32, repeat: Infinity, ease: "easeInOut" }}
-      />
+        {/* MAIN HEADING - ULTRA BOLD HERO STYLE */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end mb-24">
+          <motion.div {...fadeInUp} className="lg:col-span-8">
+            <h2 className="text-[12vw] md:text-[8.5vw] font-black leading-[0.85] tracking-tighter uppercase">
+              FEATURED <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-zinc-700">
+                PROJECTS.
+              </span>
+            </h2>
+          </motion.div>
 
-      {/* FADE + TEXTURE */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-transparent via-black/40 to-black z-[1]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.04)_1px,transparent_0)] bg-[size:24px_24px] opacity-[0.08]" />
+          <motion.div
+            {...fadeInUp}
+            transition={{ delay: 0.2 }}
+            className="lg:col-span-4 lg:pb-4 text-right"
+          >
+            <p className="text-zinc-500 text-sm md:text-base font-bold uppercase tracking-widest leading-relaxed border-r-4 border-indigo-600 pr-6">
+              Engineering digital excellence through structured systems.
+            </p>
+          </motion.div>
+        </div>
 
-      {/* CONTENT */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 pt-16 md:pt-20 pb-20 md:pb-24">
-        {/* LABEL */}
-        <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-4">
-          Projects
-        </p>
-
-        {/* HEADING */}
-        <h1
-          className="
-    text-3xl
-    sm:text-4xl
-    md:text-5xl
-    lg:text-6xl
-    font-bold
-    tracking-tight
-    leading-tight
-    mb-6
-  "
-        >
-          My <span className="text-orange-400">Projects</span>
-        </h1>
-
-        {/* DESCRIPTION */}
-        <p className="max-w-3xl text-gray-300 text-base sm:text-lg leading-relaxed mb-14">
-          Real-world projects developed with structured architecture, practical
-          workflows, and production-focused engineering.
-        </p>
-
-        {/* PROJECT CARDS */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* PROJECTS GRID - SHARP BENTO STYLE */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => {
             const Icon = project.icon;
-
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                whileHover={{
-                  y: -8,
-                  boxShadow: "0 0 40px rgba(255,140,0,0.15)",
-                }}
-                className="
-                  p-7
-                  rounded-2xl
-                  border border-white/25
-                  ring-1 ring-white/10
-                  transition-all
-                  hover:border-orange-400/60
-                "
+                whileHover={{ y: -10 }}
+                className="group relative p-10 bg-[#0c0c0c]/50 border border-zinc-800/80 rounded-[2.5rem] backdrop-blur-3xl transition-all duration-500 hover:border-indigo-500 hover:bg-zinc-900/40 shadow-2xl"
               >
-                {/* ICON + TITLE */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-lg bg-orange-500/10 border border-orange-500/20">
-                    <Icon className="w-5 h-5 text-orange-400" />
-                  </div>
-
-                  <h3 className="text-lg md:text-xl font-semibold tracking-tight">
-                    {project.title}
-                  </h3>
+                {/* Floating Arrow Icon on Hover */}
+                <div className="absolute top-10 right-10 opacity-20 group-hover:opacity-100 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-500 text-indigo-500">
+                  <ArrowUpRight size={28} strokeWidth={1.5} />
                 </div>
 
-                {/* DESCRIPTION */}
-                <p className="text-gray-300 text-base leading-relaxed mb-6">
+                {/* PROJECT ICON */}
+                <div className="p-4 bg-zinc-900 border border-zinc-800 rounded-2xl w-fit mb-10 group-hover:bg-indigo-600 transition-all duration-500">
+                  <Icon
+                    size={26}
+                    className="text-indigo-500 group-hover:text-white transition-colors"
+                  />
+                </div>
+
+                {/* PROJECT INFO - SHARP TEXT */}
+                <h3 className="text-2xl font-black uppercase tracking-tighter text-white mb-4 group-hover:text-indigo-400 transition-colors">
+                  {project.title}
+                </h3>
+
+                <p className="text-zinc-400 text-sm font-semibold leading-relaxed uppercase tracking-wider mb-10 h-16 overflow-hidden">
                   {project.desc}
                 </p>
 
-                {/* TOOLS */}
-                <div className="flex flex-wrap gap-3">
-                  {project.tools.map((tool, i) => {
-                    const ToolIcon = tool.icon;
-
-                    return (
-                      <div
-                        key={i}
-                        className="
-                          flex items-center gap-2
-                          px-3 py-1.5
-                          rounded-md
-                          border border-white/15
-                          text-sm text-gray-300
-                          bg-white/5
-                        "
-                      >
-                        <ToolIcon className="w-4 h-4 text-orange-400" />
-                        {tool.name}
-                      </div>
-                    );
-                  })}
+                {/* TECH STACK BADGES */}
+                <div className="flex flex-wrap gap-2 pt-8 border-t border-zinc-800/50">
+                  {project.tools.map((tool, i) => (
+                    <div
+                      key={i}
+                      className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/5 text-[9px] font-black uppercase tracking-widest text-zinc-500 group-hover:text-zinc-300 transition-colors"
+                    >
+                      <tool.icon size={12} className="text-indigo-500" />
+                      {tool.name}
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             );
           })}
         </div>
+
+        {/* BOTTOM ACTION BOX */}
+        <motion.div
+          {...fadeInUp}
+          className="mt-28 p-12 md:p-20 bg-[#0a0a0a] border border-zinc-800 rounded-[3.5rem] text-center relative overflow-hidden shadow-2xl"
+        >
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-indigo-500/5 blur-[100px] -z-10" />
+          <h4 className="text-2xl md:text-5xl font-black tracking-tight text-white mb-10 uppercase leading-none">
+            Ready to architect your{" "}
+            <span className="text-indigo-500 underline decoration-4 underline-offset-8 transition-all">
+              next venture?
+            </span>
+          </h4>
+          <button className="px-12 py-5 bg-white text-black font-black uppercase text-[10px] tracking-[0.4em] rounded-full hover:bg-indigo-600 hover:text-white transition-all active:scale-95">
+            Let's Build Together
+          </button>
+        </motion.div>
       </div>
     </section>
   );
