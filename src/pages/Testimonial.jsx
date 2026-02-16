@@ -82,7 +82,7 @@ export default function Testimonials() {
             <h2 className="text-[12vw] md:text-[8.5vw] font-black leading-[0.85] tracking-tighter uppercase">
               CLIENT <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-zinc-700">
-                REVIEWS.
+                REVIEWS
               </span>
             </h2>
           </motion.div>
@@ -155,9 +155,9 @@ export default function Testimonials() {
           {...fadeInUp}
           className="mt-32 p-12 border border-zinc-800 bg-[#0a0a0a] rounded-[3.5rem] text-center"
         >
-          <h4 className="text-2xl md:text-4xl font-black tracking-tight text-white uppercase leading-none">
+          <h4 className="text-2xl md:text-4xl font-light tracking-tight text-white leading-none">
             Transforming ideas into{" "}
-            <span className="text-indigo-500 underline decoration-4 underline-offset-[10px]">
+            <span className="text-indigo-500 font-black ">
               Digital Reality.
             </span>
           </h4>

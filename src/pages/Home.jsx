@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Play, Calendar } from "lucide-react"; // npm i lucide-react
+import { ArrowUpRight, Play, MessageCircle } from "lucide-react"; // npm i lucide-react
 
 const Home = () => {
   return (
@@ -66,18 +66,19 @@ const Home = () => {
             >
               <div className="p-8 border border-zinc-800/50 bg-zinc-900/10 rounded-[2rem] backdrop-blur-sm hover:border-zinc-700 transition-colors group">
                 <p className="text-3xl md:text-5xl font-black mb-1 group-hover:text-indigo-400 transition-colors">
-                  10K+
+                  04+
                 </p>
                 <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">
-                  Learners
+                  Industry Courses
                 </p>
               </div>
+
               <div className="p-8 border border-zinc-800/50 bg-zinc-900/10 rounded-[2rem] backdrop-blur-sm hover:border-zinc-700 transition-colors group">
                 <p className="text-3xl md:text-5xl font-black mb-1 group-hover:text-indigo-400 transition-colors">
-                  08+
+                  100%
                 </p>
                 <p className="text-[10px] uppercase tracking-widest text-zinc-500 font-bold">
-                  Expertises
+                  Practical Training
                 </p>
               </div>
             </motion.div>
@@ -93,7 +94,7 @@ const Home = () => {
         >
           {/* Primary Button: Solid with Icon Animation */}
           <button className="group relative flex items-center justify-center gap-3 px-10 py-6 bg-white text-black font-black uppercase text-xs tracking-[0.2em] overflow-hidden rounded-full transition-all active:scale-95">
-            <span className="relative z-10">Enquiry Form</span>
+            <span className="relative z-10">Let's Talk</span>
             <motion.div
               className="relative z-10"
               whileHover={{ rotate: 45, x: 2, y: -2 }}
@@ -104,31 +105,40 @@ const Home = () => {
           </button>
 
           {/* Secondary Button: Outline with Fill Hover */}
-          <button className="group relative flex items-center justify-center gap-3 px-10 py-6 border-2 border-zinc-800 rounded-full text-xs uppercase tracking-[0.2em] font-black hover:border-white transition-all overflow-hidden active:scale-95">
+          <a
+            href="https://wa.me/917763937638"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative flex items-center justify-center gap-3 px-10 py-6 border-2 border-zinc-800 rounded-full text-xs uppercase tracking-[0.2em] font-black hover:border-white transition-all overflow-hidden active:scale-95"
+          >
             <span className="relative z-10 group-hover:text-black transition-colors duration-300">
-              Book Workshop
+              WhatsApp Me
             </span>
-            <Calendar
+            <MessageCircle
               className="relative z-10 group-hover:text-black transition-colors duration-300"
               size={18}
             />
             <div className="absolute inset-0 bg-white translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-[0.16, 1, 0.3, 1]" />
-          </button>
+          </a>
         </motion.div>
 
         {/* Skill Ticker */}
         <div className="mt-40 border-t border-zinc-900/50 pt-12">
           <div className="flex flex-wrap gap-x-16 gap-y-8 opacity-20 hover:opacity-50 transition-opacity duration-1000">
-            {["UI/UX", "Full Stack", "Leadership", "Branding", "Strategy"].map(
-              (skill) => (
-                <div key={skill} className="flex items-center gap-4">
-                  <div className="h-1.5 w-1.5 bg-indigo-500 rounded-full" />
-                  <span className="text-sm md:text-lg font-black uppercase tracking-[0.3em]">
-                    {skill}
-                  </span>
-                </div>
-              ),
-            )}
+            {[
+              "UI/UX",
+              "Web Design",
+              "Frontend",
+              "Full Stack",
+              "Data Analytics",
+            ].map((skill) => (
+              <div key={skill} className="flex items-center gap-4">
+                <div className="h-1.5 w-1.5 bg-indigo-500 rounded-full" />
+                <span className="text-sm md:text-lg font-light uppercase tracking-[0.3em]">
+                  {skill}
+                </span>
+              </div>
+            ))}
           </div>
         </div>
       </main>
@@ -136,7 +146,7 @@ const Home = () => {
       {/* Side Label */}
       <div className="fixed right-10 bottom-24 hidden xl:block z-20">
         <p className="rotate-90 origin-right text-[10px] tracking-[1.2em] text-zinc-700 uppercase font-black">
-          Nadilix • Elite Training • 2024
+          Nadilix • Software Training • 2026
         </p>
       </div>
     </div>

@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { CheckCircle, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { CheckCircle, X, ArrowRight } from "lucide-react";
 import { createPortal } from "react-dom";
 
 export default function ContactSuccess({ name, onClose }) {
@@ -11,67 +11,100 @@ export default function ContactSuccess({ name, onClose }) {
 
   useEffect(() => {
     setMounted(true);
-  }, []);
+    // Auto close after 5 seconds if you want
+    const timer = setTimeout(onClose, 6000);
+    return () => clearTimeout(timer);
+  }, [onClose]);
 
   if (!mounted) return null;
 
   return createPortal(
-    <motion.div
-      className="fixed inset-0 z-[9999] flex items-center justify-center
-      bg-black/70 backdrop-blur-sm px-4"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
+    <AnimatePresence>
       <motion.div
-        className="absolute -bottom-48 left-1/2 -translate-x-1/2
-        w-[420px] h-[420px] sm:w-[520px] sm:h-[520px]
-        rounded-full bg-gradient-to-tr
-        from-orange-500/35 via-yellow-400/25 to-transparent
-        blur-[160px]"
-        animate={{ y: [0, -60, 0] }}
-        transition={{ duration: 26, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <motion.div
-        initial={{ y: 32, scale: 0.96, opacity: 0 }}
-        animate={{ y: 0, scale: 1, opacity: 1 }}
-        exit={{ y: 32, scale: 0.96, opacity: 0 }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-lg
-        rounded-2xl bg-black/80 backdrop-blur
-        border border-white/20 ring-1 ring-white/10
-        px-6 sm:px-10 py-10 sm:py-12 text-center"
+        className="fixed inset-0 z-[10000] flex items-center justify-center
+        bg-[#050505]/95 backdrop-blur-2xl px-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
       >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white"
-        >
-          <X size={18} />
-        </button>
-
-        <p className="text-[11px] uppercase tracking-[0.28em] text-orange-400 mb-4">
-          Success
-        </p>
-
-        <div
-          className="mx-auto mb-6 flex h-14 w-14 items-center justify-center
-          rounded-full border border-orange-400/30 bg-orange-400/10"
-        >
-          <CheckCircle size={26} className="text-orange-400" />
+        {/* Hero Background Glows */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-500/10 blur-[120px] rounded-full" />
+          <div className="absolute bottom-[-5%] right-[-5%] w-[40%] h-[40%] bg-zinc-800/20 blur-[100px] rounded-full" />
         </div>
 
-        <h3 className="text-2xl sm:text-3xl font-extrabold text-gray-200 mb-3">
-          Thank you, <span className="text-orange-400">{displayName}</span>
-        </h3>
+        <motion.div
+          initial={{ y: 50, scale: 0.9, opacity: 0 }}
+          animate={{ y: 0, scale: 1, opacity: 1 }}
+          exit={{ y: 50, scale: 0.9, opacity: 0 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 w-full max-w-md
+          rounded-[2.5rem] bg-[#0a0a0a] border border-zinc-800/50 
+          shadow-[0_0_100px_rgba(0,0,0,0.5)]
+          p-8 md:p-12 text-center overflow-hidden"
+        >
+          {/* Close Button */}
+          <button
+            onClick={onClose}
+            className="absolute top-6 right-6 p-2 bg-zinc-900 rounded-full text-zinc-500 hover:text-white transition-all active:scale-90"
+          >
+            <X size={18} strokeWidth={3} />
+          </button>
 
-        <p className="text-sm sm:text-[15px] text-gray-400 leading-relaxed">
-          Your message has been sent successfully.
-          <br />
-          I’ll get back to you shortly.
-        </p>
+          {/* Label Section */}
+          <div className="flex flex-col items-center mb-8">
+            <span className="text-[10px] uppercase tracking-[0.5em] font-black text-indigo-500 mb-6">
+              Confirmed • Nadilix
+            </span>
+
+            <div className="relative">
+              {/* Outer Glow for Icon */}
+              <div className="absolute inset-0 bg-indigo-500/20 blur-2xl rounded-full" />
+              <div
+                className="relative flex h-20 w-20 items-center justify-center
+                    rounded-full border-2 border-indigo-500/30 bg-zinc-900/50 backdrop-blur-sm shadow-xl"
+              >
+                <CheckCircle
+                  size={32}
+                  strokeWidth={2.5}
+                  className="text-indigo-400"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Success Content */}
+          <div className="space-y-4">
+            <h3 className="text-3xl md:text-4xl font-black text-white leading-tight uppercase tracking-tighter">
+              THANK YOU, <br />
+              <span className="text-zinc-700">{displayName}</span>
+            </h3>
+
+            <p className="text-zinc-500 text-sm md:text-base font-light leading-relaxed max-w-[240px] mx-auto uppercase tracking-tight">
+              Inquiry received. Hum{" "}
+              <span className="text-white italic">shortly</span> aapse connect
+              karenge.
+            </p>
+          </div>
+
+          {/* Action Button - Hero Style */}
+          <button
+            onClick={onClose}
+            className="mt-10 group relative w-full py-5 bg-white text-black font-black uppercase text-[10px] tracking-[0.3em] rounded-2xl overflow-hidden transition-all active:scale-[0.98]"
+          >
+            <span className="relative z-10 flex items-center justify-center gap-3">
+              Back to site{" "}
+              <ArrowRight
+                size={14}
+                strokeWidth={3}
+                className="group-hover:translate-x-1 transition-transform"
+              />
+            </span>
+            <div className="absolute inset-0 bg-indigo-500 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16, 1, 0.3, 1]" />
+          </button>
+        </motion.div>
       </motion.div>
-    </motion.div>,
+    </AnimatePresence>,
     document.body,
   );
 }

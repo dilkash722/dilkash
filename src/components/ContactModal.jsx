@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import {
   X,
@@ -10,10 +10,9 @@ import {
   Phone,
   Briefcase,
   MessageSquare,
-  Send,
   Loader2,
+  ArrowUpRight,
 } from "lucide-react";
-
 import { validateContactForm } from "@/utils/validateForm";
 import {
   Select as ShadcnSelect,
@@ -26,7 +25,6 @@ import {
 export default function ContactModal({ open, onClose, onSuccess }) {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({});
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -39,11 +37,11 @@ export default function ContactModal({ open, onClose, onSuccess }) {
 
   const handleChange = (key, value) => {
     setFormData((prev) => ({ ...prev, [key]: value }));
+    if (errors[key]) setErrors((prev) => ({ ...prev, [key]: null }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const validation = validateContactForm(formData);
     if (!validation.isValid) {
       setErrors(validation.errors);
@@ -51,7 +49,6 @@ export default function ContactModal({ open, onClose, onSuccess }) {
     }
 
     setLoading(true);
-
     try {
       await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
@@ -59,7 +56,6 @@ export default function ContactModal({ open, onClose, onSuccess }) {
         { ...formData, time: new Date().toLocaleString() },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
       );
-
       onClose();
       onSuccess?.(formData.name);
     } catch (err) {
@@ -70,174 +66,167 @@ export default function ContactModal({ open, onClose, onSuccess }) {
   };
 
   return (
-    <motion.div
-      className="fixed inset-0 z-[50] flex items-center justify-center bg-black overflow-hidden"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-    >
-      {/* BACKGROUND GLOWS */}
+    <AnimatePresence>
       <motion.div
-        className="absolute -bottom-48 left-1/4 w-[520px] h-[520px] rounded-full
-        bg-gradient-to-tr from-yellow-400/30 via-orange-500/25 to-transparent
-        blur-[180px]"
-        animate={{ x: [0, 80, 0], y: [0, -60, 0] }}
-        transition={{ duration: 28, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      <motion.div
-        className="absolute -bottom-64 right-1/4 w-[480px] h-[480px] rounded-full
-        bg-gradient-to-tr from-orange-500/25 to-transparent
-        blur-[160px]"
-        animate={{ x: [0, -100, 0], y: [0, -80, 0] }}
-        transition={{ duration: 32, repeat: Infinity, ease: "easeInOut" }}
-      />
-
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-black" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.04)_1px,transparent_0)] bg-[size:24px_24px] opacity-[0.08]" />
-
-      {/* MODAL CARD */}
-      <motion.div
-        initial={{ y: 40, scale: 0.96, opacity: 0 }}
-        animate={{ y: 0, scale: 1, opacity: 1 }}
-        exit={{ y: 40, scale: 0.96, opacity: 0 }}
-        transition={{ duration: 0.35, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-4xl mx-4 rounded-2xl
-        bg-black/70 backdrop-blur border border-white/20 ring-1 ring-white/10
-        p-6 sm:p-10"
+        className="fixed inset-0 z-[100] flex items-center justify-center bg-[#050505]/95 backdrop-blur-xl p-2 sm:p-4"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
       >
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white"
+        {/* Dynamic Background Glows */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-indigo-500/10 blur-[120px] rounded-full" />
+          <div className="absolute bottom-[-5%] right-[-5%] w-[40%] h-[40%] bg-zinc-800/20 blur-[100px] rounded-full" />
+        </div>
+
+        <motion.div
+          initial={{ y: 50, opacity: 0, scale: 0.95 }}
+          animate={{ y: 0, opacity: 1, scale: 1 }}
+          exit={{ y: 50, opacity: 0, scale: 0.95 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="relative z-10 w-full max-w-5xl bg-[#0a0a0a] border border-zinc-800/50 rounded-[2rem] md:rounded-[2.5rem] overflow-hidden shadow-2xl flex flex-col max-h-[92vh] md:max-h-none"
         >
-          <X />
-        </button>
-
-        <p className="text-[11px] uppercase tracking-[0.25em] text-orange-400 mb-3">
-          Contact
-        </p>
-
-        <h2 className="text-2xl sm:text-3xl font-extrabold mb-6 text-gray-200">
-          Let’s <span className="text-orange-400">Work Together</span>
-        </h2>
-
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <Input
-              icon={User}
-              placeholder="Your name"
-              value={formData.name}
-              onChange={(v) => handleChange("name", v)}
-              error={errors.name}
-              required
-            />
-
-            <Input
-              icon={Mail}
-              placeholder="Email address"
-              value={formData.email}
-              onChange={(v) => handleChange("email", v)}
-              error={errors.email}
-              required
-            />
-
-            <Input
-              icon={Phone}
-              placeholder="Phone Number"
-              value={formData.phone}
-              onChange={(v) => handleChange("phone", v)}
-              error={errors.phone}
-            />
-
-            <ProjectTypeSelect
-              value={formData.projectType}
-              onChange={(v) => handleChange("projectType", v)}
-            />
-          </div>
-
-          <Textarea
-            value={formData.message}
-            onChange={(v) => handleChange("message", v)}
-            error={errors.message}
-            required
-          />
-
+          {/* Close Button - Responsive Position */}
           <button
-            type="submit"
-            disabled={loading}
-            className="inline-flex items-center gap-2 px-8 py-3 rounded-full
-            bg-orange-500 hover:bg-orange-600 text-black text-sm font-medium
-            disabled:opacity-60"
+            onClick={onClose}
+            className="absolute top-4 right-4 md:top-8 md:right-8 z-50 p-3 bg-zinc-900/80 backdrop-blur-md rounded-full text-zinc-500 hover:text-white hover:bg-zinc-800 transition-all active:scale-90"
           >
-            {loading ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
-            ) : (
-              <Send className="w-4 h-4" />
-            )}
-            {loading ? "Sending..." : "Send Request"}
+            <X size={18} md:size={20} strokeWidth={3} />
           </button>
-        </form>
+
+          <div className="grid grid-cols-1 lg:grid-cols-5 overflow-y-auto no-scrollbar">
+            {/* Left Side: Branding (Mobile Header) */}
+            <div className="lg:col-span-2 p-8 md:p-12 bg-zinc-900/30 border-b lg:border-b-0 lg:border-r border-zinc-800/50 flex flex-col justify-between">
+              <div>
+                <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-indigo-500 mb-4 md:mb-6 block">
+                  Nadilix • Elite
+                </span>
+                <h2 className="text-3xl md:text-4xl font-black text-white leading-tight uppercase tracking-tighter">
+                  Start Your <br className="hidden md:block" />{" "}
+                  <span className="text-zinc-700">Evolution</span>
+                </h2>
+              </div>
+              <p className="text-zinc-500 text-xs md:text-sm leading-relaxed font-light mt-4 lg:mt-0">
+                Hum complex ideas ko execution-ready systems mein convert karte
+                hain. Let's talk.
+              </p>
+            </div>
+
+            {/* Right Side: Form Section */}
+            <div className="lg:col-span-3 p-6 md:p-12">
+              <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-5">
+                  <CustomInput
+                    icon={User}
+                    placeholder="Full Name"
+                    value={formData.name}
+                    onChange={(v) => handleChange("name", v)}
+                    error={errors.name}
+                  />
+                  <CustomInput
+                    icon={Mail}
+                    placeholder="Email Address"
+                    value={formData.email}
+                    onChange={(v) => handleChange("email", v)}
+                    error={errors.email}
+                  />
+                  <CustomInput
+                    icon={Phone}
+                    placeholder="Phone Number"
+                    value={formData.phone}
+                    onChange={(v) => handleChange("phone", v)}
+                    error={errors.phone}
+                  />
+
+                  <div className="space-y-1">
+                    <ShadcnSelect
+                      value={formData.projectType}
+                      onValueChange={(v) => handleChange("projectType", v)}
+                    >
+                      <SelectTrigger className="w-full bg-zinc-900/50 border-zinc-800 rounded-xl md:rounded-2xl h-[50px] md:h-[56px] text-zinc-300 focus:ring-indigo-500/20">
+                        <div className="flex items-center gap-3">
+                          <Briefcase size={16} className="text-indigo-500" />
+                          <SelectValue placeholder="Project Type" />
+                        </div>
+                      </SelectTrigger>
+                      <SelectContent className="bg-[#0a0a0a] border-zinc-800 text-white z-[110]">
+                        <SelectItem value="Website">Website</SelectItem>
+                        <SelectItem value="Web Application">
+                          Application
+                        </SelectItem>
+                        <SelectItem value="Branding">Branding</SelectItem>
+                      </SelectContent>
+                    </ShadcnSelect>
+                  </div>
+                </div>
+
+                <div className="relative">
+                  <MessageSquare
+                    size={16}
+                    className="absolute left-4 top-4 text-indigo-500"
+                  />
+                  <textarea
+                    rows={3}
+                    md={4}
+                    value={formData.message}
+                    onChange={(e) => handleChange("message", e.target.value)}
+                    placeholder="Briefly describe your project..."
+                    className="w-full bg-zinc-900/50 border border-zinc-800 rounded-xl md:rounded-2xl p-4 pl-12 text-white text-sm outline-none focus:border-indigo-500/50 transition-all resize-none placeholder:text-zinc-600 min-h-[100px]"
+                  />
+                  {errors.message && (
+                    <p className="text-[9px] text-red-500 mt-1 uppercase tracking-widest pl-2">
+                      {errors.message}
+                    </p>
+                  )}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={loading}
+                  className="group relative w-full py-5 md:py-6 bg-white text-black font-black uppercase text-[10px] md:text-xs tracking-[0.3em] rounded-xl md:rounded-2xl overflow-hidden transition-all active:scale-[0.98] disabled:opacity-50"
+                >
+                  <span className="relative z-10 flex items-center justify-center gap-3">
+                    {loading ? "Processing..." : "Send Inquiry"}
+                    {!loading && (
+                      <ArrowUpRight
+                        size={16}
+                        strokeWidth={3}
+                        className="group-hover:rotate-45 transition-transform"
+                      />
+                    )}
+                  </span>
+                  <div className="absolute inset-0 bg-indigo-500 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16, 1, 0.3, 1]" />
+                </button>
+              </form>
+            </div>
+          </div>
+        </motion.div>
       </motion.div>
-    </motion.div>
+    </AnimatePresence>
   );
 }
 
-/* SMALL COMPONENTS */
-
-function Input({ icon: Icon, placeholder, value, onChange, error, required }) {
+// Custom Input for better responsiveness
+function CustomInput({ icon: Icon, placeholder, value, onChange, error }) {
   return (
-    <div>
-      <div className="flex items-center gap-2 border border-white/20 rounded-lg px-3 py-2">
-        <Icon className="w-4 h-4 text-orange-400" />
+    <div className="space-y-1">
+      <div className="relative group">
+        <Icon
+          size={16}
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-indigo-500 transition-colors"
+        />
         <input
           value={value}
-          required={required}
           placeholder={placeholder}
           onChange={(e) => onChange(e.target.value)}
-          className="w-full bg-transparent outline-none text-sm text-white"
+          className="w-full bg-zinc-900/50 border border-zinc-800 rounded-xl md:rounded-2xl h-[50px] md:h-[56px] pl-12 pr-4 text-white text-sm outline-none focus:border-indigo-500/50 transition-all placeholder:text-zinc-600"
         />
       </div>
-      {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
-    </div>
-  );
-}
-
-function ProjectTypeSelect({ value, onChange }) {
-  return (
-    <ShadcnSelect value={value} onValueChange={onChange}>
-      <SelectTrigger className="w-full flex items-center gap-2 border border-white/20 rounded-lg px-3 h-[42px] bg-transparent text-sm text-white">
-        <Briefcase className="w-4 h-4 text-orange-400 shrink-0" />
-        <SelectValue placeholder="Choose your project type" />
-      </SelectTrigger>
-
-      <SelectContent
-        position="popper"
-        sideOffset={6}
-        className="z-[9999] bg-black border border-white/20 text-white text-sm"
-      >
-        <SelectItem value="Website">Website</SelectItem>
-        <SelectItem value="Web Application">Web Application</SelectItem>
-      </SelectContent>
-    </ShadcnSelect>
-  );
-}
-
-function Textarea({ value, onChange, error, required }) {
-  return (
-    <div>
-      <div className="flex gap-2 border border-white/20 rounded-lg px-3 py-2">
-        <MessageSquare className="w-4 h-4 text-orange-400 mt-1" />
-        <textarea
-          rows={4}
-          required={required}
-          value={value}
-          onChange={(e) => onChange(e.target.value)}
-          placeholder="Briefly describe your project..."
-          className="w-full bg-transparent outline-none text-sm text-white resize-none"
-        />
-      </div>
-      {error && <p className="mt-1 text-xs text-red-400">{error}</p>}
+      {error && (
+        <p className="text-[9px] text-red-500 uppercase tracking-widest pl-2 font-bold">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

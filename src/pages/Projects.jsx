@@ -106,7 +106,7 @@ export default function Projects() {
             <h2 className="text-[12vw] md:text-[8.5vw] font-black leading-[0.85] tracking-tighter uppercase">
               FEATURED <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-zinc-700">
-                PROJECTS.
+                PROJECTS
               </span>
             </h2>
           </motion.div>
@@ -116,7 +116,7 @@ export default function Projects() {
             transition={{ delay: 0.2 }}
             className="lg:col-span-4 lg:pb-4 text-right"
           >
-            <p className="text-zinc-500 text-sm md:text-base font-bold uppercase tracking-widest leading-relaxed border-r-4 border-indigo-600 pr-6">
+            <p className="text-zinc-500 text-sm md:text-base font-light uppercase tracking-widest leading-relaxed border-r-4 border-indigo-600 pr-6">
               Engineering digital excellence through structured systems.
             </p>
           </motion.div>
@@ -178,18 +178,18 @@ export default function Projects() {
         {/* BOTTOM ACTION BOX */}
         <motion.div
           {...fadeInUp}
-          className="mt-28 p-12 md:p-20 bg-[#0a0a0a] border border-zinc-800 rounded-[3.5rem] text-center relative overflow-hidden shadow-2xl"
+          className="mt-24 p-10 md:p-16 border border-zinc-800 bg-white/[0.01] rounded-[4rem] text-center relative overflow-hidden"
         >
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-indigo-500/5 blur-[100px] -z-10" />
-          <h4 className="text-2xl md:text-5xl font-black tracking-tight text-white mb-10 uppercase leading-none">
-            Ready to architect your{" "}
-            <span className="text-indigo-500 underline decoration-4 underline-offset-8 transition-all">
-              next venture?
+
+          <h4 className="text-2xl md:text-5xl font-light tracking-tight text-zinc-300 max-w-4xl mx-auto leading-tight">
+            Ready to build your next venture with a
+            <span className="text-white font-semibold">
+              {" "}
+              production-ready mindset
             </span>
+            ?
           </h4>
-          <button className="px-12 py-5 bg-white text-black font-black uppercase text-[10px] tracking-[0.4em] rounded-full hover:bg-indigo-600 hover:text-white transition-all active:scale-95">
-            Let's Build Together
-          </button>
         </motion.div>
       </div>
     </section>

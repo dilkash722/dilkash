@@ -32,7 +32,7 @@ export default function Footer() {
             <h2 className="text-[10vw] md:text-[6vw] font-black leading-[0.9] tracking-tighter uppercase mb-10">
               LET'S ARCHITECT <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-zinc-700">
-                YOUR VISION.
+                YOUR VISION
               </span>
             </h2>
             <button className="group flex items-center gap-4 px-10 py-5 bg-white text-black font-black uppercase text-xs tracking-[0.4em] rounded-full hover:bg-indigo-600 hover:text-white transition-all duration-500 active:scale-95">
@@ -57,7 +57,7 @@ export default function Footer() {
               <div className="flex items-center gap-3 text-zinc-300 group cursor-pointer">
                 <MapPin size={18} className="text-indigo-500" />
                 <span className="text-sm font-bold uppercase tracking-widest group-hover:text-white transition-colors">
-                  Patna, Bihar, India
+                  Katihar, Bihar, India
                 </span>
               </div>
             </div>
@@ -69,7 +69,7 @@ export default function Footer() {
               <div className="flex items-center gap-3 text-zinc-300 group cursor-pointer">
                 <Mail size={18} className="text-indigo-500" />
                 <span className="text-sm font-bold uppercase tracking-widest group-hover:text-white transition-colors">
-                  hello@nadilix.com
+                  danieldilkash@gmail.com
                 </span>
               </div>
             </div>
@@ -133,19 +133,12 @@ export default function Footer() {
               >
                 <Github size={18} />
               </a>
-            </div>
-          </div>
-
-          <div className="col-span-2 space-y-6 md:text-right">
-            <p className="text-zinc-600 text-[10px] font-black uppercase tracking-[0.5em]">
-              Newsletter
-            </p>
-            <div className="flex md:justify-end">
-              <input
-                type="email"
-                placeholder="EMAIL ADDRESS"
-                className="bg-transparent border-b border-zinc-800 py-3 px-2 text-[10px] font-black tracking-widest focus:outline-none focus:border-indigo-500 w-full max-w-xs transition-colors"
-              />
+              <a
+                href="mailto:yourname@example.com"
+                className="p-3 bg-zinc-900 rounded-full hover:bg-indigo-600 transition-all text-white group"
+              >
+                <Mail size={18} />
+              </a>
             </div>
           </div>
         </div>
@@ -166,7 +159,7 @@ export default function Footer() {
         {/* COPYRIGHT INFO */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-10">
           <p className="text-[9px] font-bold uppercase tracking-[0.5em] text-zinc-600 text-center">
-            © 2024 MD DILKASH ALAM • ALL RIGHTS RESERVED
+            © 2025 MD DILKASH ALAM • ALL RIGHTS RESERVED
           </p>
           <div className="flex gap-8 text-[9px] font-black uppercase tracking-[0.3em] text-zinc-500">
             <span className="hover:text-indigo-500 cursor-pointer transition-colors">

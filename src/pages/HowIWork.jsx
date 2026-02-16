@@ -83,7 +83,7 @@ export default function Methodology() {
             <h2 className="text-[12vw] md:text-[8vw] font-black leading-[0.8] tracking-tighter uppercase">
               OUR <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-white/20">
-                APPROACH.
+                APPROACH
               </span>
             </h2>
           </motion.div>

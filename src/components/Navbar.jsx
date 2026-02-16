@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Menu, X, ArrowUpRight, Zap, ArrowRight } from "lucide-react";
 import {
   Sheet,
@@ -16,7 +16,7 @@ const navItems = [
   { id: "home", label: "Home" },
   { id: "about", label: "About" },
   { id: "projects", label: "Work" },
-  { id: "testimonials", label: "Vibe" },
+  { id: "testimonials", label: "Reviews" },
   { id: "contact", label: "Connect", modal: true },
 ];
 
@@ -34,47 +34,47 @@ export default function Navbar({ activeSection }) {
 
   return (
     <nav
-      className={`fixed top-0 z-50 w-full transition-all duration-700 ${
+      className={`fixed top-0 z-50 w-full transition-all duration-700 ease-in-out ${
         scrolled
-          ? "py-4 bg-[#050505]/90 backdrop-blur-2xl border-b border-white/5 shadow-2xl"
-          : "py-8 bg-transparent"
+          ? "h-20 bg-[#050505]/90 backdrop-blur-2xl ..."
+          : "h-28 md:h-36 bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl px-6 md:px-12 flex items-center justify-between">
-        {/* ================= BRANDING: ULTRA BOLD (HERO SYNC) ================= */}
+      <div className="mx-auto max-w-7xl h-full px-6 md:px-12 flex items-center justify-between">
+        {/* ================= BRANDING: MATCHING HERO TYPO (ULTRA BOLD) ================= */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-4 group cursor-pointer"
+          className="flex items-center gap-5 group cursor-pointer"
         >
           <div className="relative">
-            <div className="absolute inset-0 bg-indigo-500 rounded-full blur-md opacity-20 group-hover:opacity-60 transition-opacity" />
-            <Avatar className="h-11 w-11 border-2 border-zinc-800 group-hover:border-indigo-500 transition-all duration-500 shadow-xl">
+            <div className="absolute inset-0 bg-indigo-600 rounded-full blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
+            <Avatar className="h-12 w-12 md:h-14 md:w-14 border-2 border-zinc-800 group-hover:border-indigo-500 transition-all duration-500">
               <AvatarImage src={avatarImg} className="object-cover" />
-              <AvatarFallback className="bg-zinc-900 text-white font-black text-[10px]">
+              <AvatarFallback className="bg-zinc-900 text-white font-black text-xs">
                 MD
               </AvatarFallback>
             </Avatar>
           </div>
-          <div className="flex flex-col leading-[0.9]">
-            <span className="text-xl font-black uppercase tracking-tighter text-white">
+          <div className="flex flex-col leading-[0.85]">
+            <span className="text-xl md:text-2xl font-black uppercase tracking-tighter text-white">
               MD DILKASH
             </span>
-            <span className="text-[9px] tracking-[0.4em] text-indigo-500 font-black uppercase mt-1">
+            <span className="text-[10px] tracking-[0.5em] text-indigo-500 font-light  uppercase mt-1">
               NADILIX FOUNDER
             </span>
           </div>
         </motion.div>
 
-        {/* ================= DESKTOP NAV: CAPSULE STYLE ================= */}
-        <div className="hidden md:flex items-center gap-1 bg-white/[0.03] border border-white/10 p-1.5 rounded-full backdrop-blur-3xl shadow-inner">
+        {/* ================= DESKTOP NAV: HERO SYNCED TYPOGRAPHY ================= */}
+        <div className="hidden md:flex items-center gap-2 bg-white/[0.02] border border-white/5 p-2 rounded-full backdrop-blur-3xl">
           {navItems.map(
             (item) =>
               !item.modal && (
                 <a
                   key={item.id}
                   href={`#${item.id}`}
-                  className={`px-6 py-2 text-[11px] font-black uppercase tracking-[0.25em] transition-all relative rounded-full ${
+                  className={`px-8 py-3 text-[11px] font-black uppercase tracking-[0.3em] transition-all relative rounded-full ${
                     activeSection === item.id
                       ? "text-white"
                       : "text-zinc-500 hover:text-white"
@@ -84,7 +84,7 @@ export default function Navbar({ activeSection }) {
                   {activeSection === item.id && (
                     <motion.div
                       layoutId="navActive"
-                      className="absolute inset-0 bg-indigo-600 rounded-full -z-10 shadow-lg shadow-indigo-500/20"
+                      className="absolute inset-0 bg-indigo-600 rounded-full -z-10 shadow-[0_0_20px_rgba(79,70,229,0.3)]"
                       transition={{
                         type: "spring",
                         stiffness: 300,
@@ -97,54 +97,61 @@ export default function Navbar({ activeSection }) {
           )}
         </div>
 
-        {/* ================= ACTION & MOBILE TOGGLE ================= */}
-        <div className="flex items-center gap-4">
+        {/* ================= ACTION & MOBILE TRIGGER ================= */}
+        <div className="flex items-center gap-5">
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={openContact}
-            className="hidden md:flex items-center gap-3 px-8 py-3.5 bg-white text-black rounded-full font-black uppercase text-[10px] tracking-[0.2em] hover:bg-indigo-600 hover:text-white transition-all duration-500 shadow-xl group"
+            className="hidden md:flex items-center gap-4 px-10 py-4 bg-white text-black rounded-full font-black uppercase text-[11px] tracking-[0.3em] hover:bg-indigo-600 hover:text-white transition-all duration-500 shadow-2xl group"
           >
             LET'S TALK
             <ArrowUpRight
-              size={16}
+              size={18}
               className="group-hover:rotate-45 transition-transform"
               strokeWidth={3}
             />
           </motion.button>
 
-          {/* MOBILE DRAWER: PROFESSIONAL RE-DESIGN */}
+          {/* MOBILE DRAWER: RE-MATCHED TO HERO STYLE */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild className="md:hidden">
-              <button className="p-3 bg-zinc-900/80 backdrop-blur-md border border-zinc-800 rounded-full text-white active:scale-90 transition-transform shadow-xl">
-                <Menu size={24} strokeWidth={3} />
+              <button className="p-4 bg-zinc-900/80 border border-zinc-800 rounded-full text-white shadow-xl active:scale-90 transition-transform">
+                <Menu size={26} strokeWidth={3} />
               </button>
             </SheetTrigger>
 
             <SheetContent
               side="right"
-              className="bg-[#050505] border-l border-zinc-800 p-0 w-full flex flex-col overflow-hidden"
+              className="bg-[#050505] border-l border-zinc-900 p-0 w-full flex flex-col focus:outline-none"
             >
-              {/* Drawer Header with Close Icon */}
-              <div className="p-8 flex justify-between items-center border-b border-white/5">
-                <div className="flex items-center gap-3">
-                  <Zap size={18} className="text-indigo-500 fill-indigo-500" />
-                  <span className="text-[10px] font-black tracking-[0.4em] text-zinc-500 uppercase font-black">
-                    Nadilix Menu
+              {/* Drawer Header */}
+              <div className="p-10 flex justify-between items-center border-b border-zinc-900/50">
+                <div className="flex flex-col">
+                  <span className="text-xl font-black text-white tracking-tighter uppercase">
+                    MD DILKASH
+                  </span>
+                  <span className="text-[9px] tracking-[0.4em] text-indigo-500 font-black uppercase">
+                    Menu System
                   </span>
                 </div>
-                <SheetClose className="p-3 bg-zinc-900 border border-zinc-800 rounded-full text-white hover:bg-indigo-600 transition-colors">
+
+                <SheetClose className="group relative p-4 bg-white rounded-full text-black hover:bg-indigo-500 hover:text-white transition-all duration-500 active:scale-95">
                   <X size={24} strokeWidth={3} />
                 </SheetClose>
               </div>
 
-              {/* Drawer Navigation Links */}
-              <div className="flex-1 flex flex-col justify-center px-10 gap-10">
+              {/* Drawer Links: GIANT HERO STYLE */}
+              <div className="flex-1 flex flex-col justify-center px-8 md:px-16 gap-6 md:gap-10">
                 {navItems.map((item, i) => (
                   <motion.div
-                    key={item.id}
+                    key={item.id || i}
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.1, duration: 0.5 }}
+                    transition={{
+                      delay: i * 0.1,
+                      duration: 0.8,
+                      ease: [0.16, 1, 0.3, 1],
+                    }}
                   >
                     <a
                       href={`#${item.id}`}
@@ -152,16 +159,28 @@ export default function Navbar({ activeSection }) {
                         if (item.modal) openContact();
                         setIsOpen(false);
                       }}
-                      className={`text-5xl font-black uppercase tracking-tighter transition-all flex items-center justify-between group ${
+                      className={`text-[12vw] md:text-[6vw] font-black uppercase tracking-tighter transition-all flex items-center justify-between group leading-[0.85] ${
                         activeSection === item.id
                           ? "text-indigo-500"
-                          : "text-white"
+                          : "text-zinc-800 hover:text-white"
                       }`}
                     >
-                      {item.label}
+                      <span>{item.label}</span>
+                      {/* Fixed Arrow: Mobile pe bhi dikhega aur animate hoga */}
                       <ArrowRight
-                        className={`opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all ${activeSection === item.id ? "opacity-100 translate-x-0" : ""}`}
-                        size={32}
+                        className={`
+              transition-all duration-700 ease-[0.16, 1, 0.3, 1]
+              /* Mobile Styles */
+              w-8 h-8 
+              /* Desktop Styles */
+              md:w-16 md:h-16
+              /* Active vs Hover Animation */
+              ${
+                activeSection === item.id
+                  ? "opacity-100 translate-x-0 text-indigo-500"
+                  : "opacity-0 -translate-x-10 group-hover:opacity-100 group-hover:translate-x-0 text-white"
+              }
+            `}
                       />
                     </a>
                   </motion.div>
@@ -169,20 +188,25 @@ export default function Navbar({ activeSection }) {
               </div>
 
               {/* Drawer Footer */}
-              <div className="p-10 bg-zinc-950/50 border-t border-white/5">
-                <p className="text-[10px] tracking-[0.5em] text-zinc-700 uppercase font-black mb-4 italic">
-                  Social Channels
+              <div className="p-10 md:p-16 bg-[#080808] border-t border-zinc-900/50">
+                <p className="text-[10px] tracking-[0.6em] text-zinc-700 uppercase font-black mb-8">
+                  Nadilix Ecosystem • 2026
                 </p>
-                <div className="flex gap-8 text-xs font-black uppercase tracking-widest text-zinc-400">
-                  <span className="hover:text-indigo-500 transition-colors">
-                    In
-                  </span>
-                  <span className="hover:text-indigo-500 transition-colors">
-                    Tw
-                  </span>
-                  <span className="hover:text-indigo-500 transition-colors">
-                    Be
-                  </span>
+                <div className="flex gap-8 text-[11px] font-black uppercase tracking-[0.2em] text-zinc-500">
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    className="hover:text-indigo-500 transition-colors underline decoration-indigo-500/20 underline-offset-4"
+                  >
+                    Linkedin
+                  </a>
+                  <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    className="hover:text-indigo-500 transition-colors underline decoration-indigo-500/20 underline-offset-4"
+                  >
+                    Instagram
+                  </a>
                 </div>
               </div>
             </SheetContent>
