@@ -60,7 +60,7 @@ export default function Navbar({ activeSection }) {
             <span className="text-xl md:text-2xl font-black uppercase tracking-tighter text-white">
               MD DILKASH
             </span>
-            <span className="text-[10px] tracking-[0.5em] text-indigo-500 font-light  uppercase mt-1">
+            <span className="text-[10px] tracking-[0.4em] text-zinc-700 font-bold  uppercase mt-1">
               NADILIX FOUNDER
             </span>
           </div>
