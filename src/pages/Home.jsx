@@ -109,16 +109,21 @@ const Home = () => {
             href="https://wa.me/917763937638"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative flex items-center justify-center gap-3 px-10 py-6 border-2 border-zinc-800 rounded-full text-xs uppercase tracking-[0.2em] font-black hover:border-white transition-all overflow-hidden active:scale-95"
+            className="group relative flex items-center justify-center gap-3 px-10 py-6 border-2 border-zinc-800 rounded-full text-xs uppercase tracking-[0.2em] font-black transition-all overflow-hidden active:scale-95 hover:border-white active:border-white"
           >
-            <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+            {/* White sliding background */}
+            <div className="absolute inset-0 bg-white translate-x-[-100%] group-hover:translate-x-0 group-active:translate-x-0 transition-transform duration-500 ease-[0.16,1,0.3,1]" />
+
+            {/* Text */}
+            <span className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black">
               WhatsApp Me
             </span>
+
+            {/* Icon */}
             <MessageCircle
-              className="relative z-10 group-hover:text-black transition-colors duration-300"
+              className="relative z-10 transition-colors duration-300 group-hover:text-black group-active:text-black"
               size={18}
             />
-            <div className="absolute inset-0 bg-white translate-x-[-100%] group-hover:translate-x-0 transition-transform duration-500 ease-[0.16, 1, 0.3, 1]" />
           </a>
         </motion.div>
 
