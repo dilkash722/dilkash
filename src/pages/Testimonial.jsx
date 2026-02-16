@@ -153,12 +153,15 @@ export default function Testimonials() {
         {/* BOTTOM IMPACT STATEMENT */}
         <motion.div
           {...fadeInUp}
-          className="mt-32 p-12 border border-zinc-800 bg-[#0a0a0a] rounded-[3.5rem] text-center"
+          className="mt-32 p-12 md:p-16 border border-zinc-800 bg-white/[0.01] rounded-[4rem] text-center relative overflow-hidden"
         >
-          <h4 className="text-2xl md:text-4xl font-light tracking-tight text-white leading-none">
-            Transforming ideas into{" "}
-            <span className="text-indigo-500 font-black ">
-              Digital Reality.
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-indigo-500/5 blur-[100px] -z-10" />
+
+          <h4 className="text-2xl sm:text-3xl md:text-5xl font-light tracking-tight leading-tight text-zinc-300 max-w-4xl mx-auto">
+            Transforming ambitious ideas into
+            <br />
+            <span className="text-white font-semibold">
+              scalable, production-ready digital systems
             </span>
           </h4>
         </motion.div>
