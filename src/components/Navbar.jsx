@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Menu, X, ArrowUpRight, Zap, ArrowRight } from "lucide-react";
+import { Menu, X, ArrowUpRight, ArrowRight } from "lucide-react";
 import {
   Sheet,
   SheetTrigger,
@@ -34,180 +34,131 @@ export default function Navbar({ activeSection }) {
 
   return (
     <nav
-      className={`fixed top-0 z-50 w-full transition-all duration-700 ease-in-out ${
+      className={`fixed top-0 z-50 w-full transition-all duration-500 ${
         scrolled
-          ? "h-20 bg-[#050505]/90 backdrop-blur-2xl ..."
-          : "h-28 md:h-36 bg-transparent"
+          ? "h-20 bg-[#050505]/90 backdrop-blur-2xl"
+          : "h-20 md:h-24 bg-transparent"
       }`}
     >
-      <div className="mx-auto max-w-7xl h-full px-6 md:px-12 flex items-center justify-between">
-        {/* ================= BRANDING: MATCHING HERO TYPO (ULTRA BOLD) ================= */}
+      <div className="mx-auto max-w-7xl h-full px-4 sm:px-6 md:px-10 lg:px-12 flex items-center justify-between">
+        {/* BRAND */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-5 group cursor-pointer"
+          className="flex items-center gap-3 md:gap-5"
         >
-          <div className="relative">
-            <div className="absolute inset-0 bg-indigo-600 rounded-full blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
-            <Avatar className="h-12 w-12 md:h-14 md:w-14 border-2 border-zinc-800 group-hover:border-indigo-500 transition-all duration-500">
-              <AvatarImage src={avatarImg} className="object-cover" />
-              <AvatarFallback className="bg-zinc-900 text-white font-black text-xs">
-                MD
-              </AvatarFallback>
-            </Avatar>
-          </div>
-          <div className="flex flex-col leading-[0.85]">
-            <span className="text-xl md:text-2xl font-black uppercase tracking-tighter text-white">
+          <Avatar className="h-10 w-10 md:h-12 md:w-12 border border-zinc-800">
+            <AvatarImage src={avatarImg} />
+            <AvatarFallback>MD</AvatarFallback>
+          </Avatar>
+
+          <div className="flex flex-col leading-tight w-fit">
+            <span className="text-sm md:text-xl font-black uppercase text-white">
               MD DILKASH
             </span>
-            <span className="text-[10px] tracking-[0.4em] text-zinc-700 font-bold  uppercase mt-1">
-              NADILIX FOUNDER
+
+            <span className="text-[9px] tracking-[0.2em] md:tracking-[0.3em] text-zinc-400 uppercase break-words">
+              FOUNDER AT NADILIX
             </span>
           </div>
         </motion.div>
 
-        {/* ================= DESKTOP NAV: HERO SYNCED TYPOGRAPHY ================= */}
-        <div className="hidden md:flex items-center gap-2 bg-white/[0.02] border border-white/5 p-2 rounded-full backdrop-blur-3xl">
-          {navItems.map(
-            (item) =>
-              !item.modal && (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className={`px-8 py-3 text-[11px] font-black uppercase tracking-[0.3em] transition-all relative rounded-full ${
-                    activeSection === item.id
-                      ? "text-white"
-                      : "text-zinc-500 hover:text-white"
-                  }`}
-                >
-                  {item.label}
-                  {activeSection === item.id && (
-                    <motion.div
-                      layoutId="navActive"
-                      className="absolute inset-0 bg-indigo-600 rounded-full -z-10 shadow-[0_0_20px_rgba(79,70,229,0.3)]"
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 30,
-                      }}
-                    />
-                  )}
-                </a>
-              ),
-          )}
+        {/* DESKTOP NAV (FIXED BREAKPOINT) */}
+        <div className="hidden lg:flex items-center gap-2 bg-white/[0.02] border border-white/5 p-2 rounded-full backdrop-blur-3xl">
+          {navItems
+            .filter((item) => !item.modal)
+            .map((item) => (
+              <a
+                key={item.id}
+                href={`#${item.id}`}
+                className={`px-4 sm:px-5 md:px-6 py-2.5 md:py-3 text-[10px] md:text-xs font-black uppercase tracking-[0.12em] md:tracking-[0.2em] rounded-full transition-all duration-300 whitespace-nowrap ${
+                  activeSection === item.id
+                    ? "text-white bg-indigo-600"
+                    : "text-zinc-500 hover:text-white"
+                }`}
+              >
+                {item.label}
+              </a>
+            ))}
         </div>
 
-        {/* ================= ACTION & MOBILE TRIGGER ================= */}
-        <div className="flex items-center gap-5">
+        {/* RIGHT */}
+        <div className="flex items-center gap-3">
+          {/* DESKTOP BUTTON */}
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={openContact}
-            className="hidden md:flex items-center gap-4 px-10 py-4 bg-white text-black rounded-full font-black uppercase text-[11px] tracking-[0.3em] hover:bg-indigo-600 hover:text-white transition-all duration-500 shadow-2xl group"
+            className="hidden md:flex items-center gap-2 px-4 md:px-5 py-2.5 md:py-3 bg-white text-black rounded-full text-[10px] md:text-xs font-black uppercase tracking-[0.15em] md:tracking-[0.2em] hover:bg-indigo-600 hover:text-white transition-all duration-300"
           >
             LET'S TALK
-            <ArrowUpRight
-              size={18}
-              className="group-hover:rotate-45 transition-transform"
-              strokeWidth={3}
-            />
+            <ArrowUpRight size={14} />
           </motion.button>
 
-          {/* MOBILE DRAWER: RE-MATCHED TO HERO STYLE */}
+          {/* MOBILE DRAWER */}
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
-            <SheetTrigger asChild className="md:hidden">
-              <button className="p-4 bg-zinc-900/80 border border-zinc-800 rounded-full text-white shadow-xl active:scale-90 transition-transform">
-                <Menu size={26} strokeWidth={3} />
+            <SheetTrigger asChild className="lg:hidden">
+              <button className="p-3 bg-zinc-900/80 border border-zinc-800 rounded-full text-white active:scale-90 transition">
+                <Menu size={22} />
               </button>
             </SheetTrigger>
 
             <SheetContent
               side="right"
-              className="bg-[#050505] border-l border-zinc-900 p-0 w-full flex flex-col focus:outline-none"
+              className="bg-[#050505] border-l border-zinc-900 p-0 w-full flex flex-col"
             >
-              {/* Drawer Header */}
-              <div className="p-10 flex justify-between items-center border-b border-zinc-900/50">
-                <div className="flex flex-col">
-                  <span className="text-xl font-black text-white tracking-tighter uppercase">
+              {/* HEADER */}
+              <div className="p-6 flex justify-between items-center border-b border-zinc-900">
+                <div>
+                  <p className="text-lg font-black text-white uppercase">
                     MD DILKASH
-                  </span>
-                  <span className="text-[9px] tracking-[0.4em] text-indigo-500 font-black uppercase">
-                    Menu System
-                  </span>
+                  </p>
+                  <p className="text-[9px] tracking-[0.3em] text-zinc-400 ">
+                    Founder at Nadilix
+                  </p>
                 </div>
 
-                <SheetClose className="group relative p-4 bg-white rounded-full text-black hover:bg-indigo-500 hover:text-white transition-all duration-500 active:scale-95">
-                  <X size={24} strokeWidth={3} />
+                <SheetClose className="p-3 bg-white rounded-full text-black active:scale-95">
+                  <X size={20} />
                 </SheetClose>
               </div>
 
-              {/* Drawer Links: GIANT HERO STYLE */}
-              <div className="flex-1 flex flex-col justify-center px-8 md:px-16 gap-6 md:gap-10">
+              {/* LINKS */}
+              <div className="flex-1 flex flex-col justify-center px-6 gap-6">
                 {navItems.map((item, i) => (
-                  <motion.div
-                    key={item.id || i}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      delay: i * 0.1,
-                      duration: 0.8,
-                      ease: [0.16, 1, 0.3, 1],
+                  <motion.a
+                    key={i}
+                    href={`#${item.id}`}
+                    onClick={() => {
+                      if (item.modal) openContact();
+                      setIsOpen(false);
                     }}
+                    initial={{ opacity: 0, x: 40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.08 }}
+                    className={`flex items-center justify-between text-3xl sm:text-4xl font-black uppercase tracking-tight transition-colors duration-300 group ${
+                      activeSection === item.id
+                        ? "text-indigo-500"
+                        : "text-zinc-700 hover:text-white active:text-white"
+                    }`}
                   >
-                    <a
-                      href={`#${item.id}`}
-                      onClick={() => {
-                        if (item.modal) openContact();
-                        setIsOpen(false);
-                      }}
-                      className={`text-[12vw] md:text-[6vw] font-black uppercase tracking-tighter transition-all flex items-center justify-between group leading-[0.85] ${
+                    <span>{item.label}</span>
+
+                    {/* HOVER + MOBILE ACTIVE FIX */}
+                    <ArrowRight
+                      className={`transition-all duration-500 ${
                         activeSection === item.id
-                          ? "text-indigo-500"
-                          : "text-zinc-800 hover:text-white"
+                          ? "opacity-100 translate-x-0 text-indigo-500"
+                          : "opacity-0 -translate-x-6 group-hover:opacity-100 group-hover:translate-x-0 group-active:opacity-100 group-active:translate-x-0 text-white"
                       }`}
-                    >
-                      <span>{item.label}</span>
-                      {/* Fixed Arrow: Mobile pe bhi dikhega aur animate hoga */}
-                      <ArrowRight
-                        className={`
-              transition-all duration-700 ease-[0.16, 1, 0.3, 1]
-              /* Mobile Styles */
-              w-8 h-8 
-              /* Desktop Styles */
-              md:w-16 md:h-16
-              /* Active vs Hover Animation */
-              ${
-                activeSection === item.id
-                  ? "opacity-100 translate-x-0 text-indigo-500"
-                  : "opacity-0 -translate-x-10 group-hover:opacity-100 group-hover:translate-x-0 text-white"
-              }
-            `}
-                      />
-                    </a>
-                  </motion.div>
+                      size={28}
+                    />
+                  </motion.a>
                 ))}
               </div>
 
-              {/* Drawer Footer */}
-              <div className="p-10 md:p-16 bg-[#080808] border-t border-zinc-900/50">
-                <p className="text-[10px] tracking-[0.6em] text-zinc-700 uppercase font-black mb-8">
-                  Nadilix Ecosystem • 2026
-                </p>
-                <div className="flex gap-8 text-[11px] font-black uppercase tracking-[0.2em] text-zinc-500">
-                  <a
-                    href="https://linkedin.com"
-                    target="_blank"
-                    className="hover:text-indigo-500 transition-colors underline decoration-indigo-500/20 underline-offset-4"
-                  >
-                    Linkedin
-                  </a>
-                  <a
-                    href="https://instagram.com"
-                    target="_blank"
-                    className="hover:text-indigo-500 transition-colors underline decoration-indigo-500/20 underline-offset-4"
-                  >
-                    Instagram
-                  </a>
-                </div>
+              {/* FOOTER */}
+              <div className="p-6 border-t border-zinc-900 text-xs text-zinc-600">
+                Nadilix • 2026
               </div>
             </SheetContent>
           </Sheet>

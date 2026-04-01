@@ -98,8 +98,8 @@ export default function ContactModal({ open, onClose, onSuccess }) {
             {/* Left Side: Branding (Mobile Header) */}
             <div className="lg:col-span-2 p-8 md:p-12 bg-zinc-900/30 border-b lg:border-b-0 lg:border-r border-zinc-800/50 flex flex-col justify-between">
               <div>
-                <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-indigo-500 mb-4 md:mb-6 block">
-                  Nadilix • Elite
+                <span className="text-[10px] uppercase tracking-[0.5em] font-bold text-zinc-400 mb-4 md:mb-6 block">
+                  Nadilix • Coding Lab
                 </span>
                 <h2 className="text-3xl md:text-4xl font-black text-white leading-tight uppercase tracking-tighter">
                   Start Your <br className="hidden md:block" />{" "}
@@ -107,8 +107,7 @@ export default function ContactModal({ open, onClose, onSuccess }) {
                 </h2>
               </div>
               <p className="text-zinc-500 text-xs md:text-sm leading-relaxed font-light mt-4 lg:mt-0">
-                Hum complex ideas ko execution-ready systems mein convert karte
-                hain. Let's talk.
+                Let’s build something real and practical together.
               </p>
             </div>
 
@@ -152,9 +151,11 @@ export default function ContactModal({ open, onClose, onSuccess }) {
                       <SelectContent className="bg-[#0a0a0a] border-zinc-800 text-white z-[110]">
                         <SelectItem value="Website">Website</SelectItem>
                         <SelectItem value="Web Application">
-                          Application
+                          Web Application
                         </SelectItem>
-                        <SelectItem value="Branding">Branding</SelectItem>
+                        <SelectItem value="Mobile Application">
+                          Mobile Application
+                        </SelectItem>
                       </SelectContent>
                     </ShadcnSelect>
                   </div>

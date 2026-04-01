@@ -81,9 +81,9 @@ export default function ContactSuccess({ name, onClose }) {
             </h3>
 
             <p className="text-zinc-500 text-sm md:text-base font-light leading-relaxed max-w-[240px] mx-auto uppercase tracking-tight">
-              Inquiry received. Hum{" "}
-              <span className="text-white italic">shortly</span> aapse connect
-              karenge.
+              Inquiry received. We{" "}
+              <span className="text-white italic">will</span> contact you
+              shortly.
             </p>
           </div>
 
