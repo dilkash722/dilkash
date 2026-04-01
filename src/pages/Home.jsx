@@ -93,14 +93,19 @@ const Home = () => {
           className="flex flex-col sm:flex-row gap-4 sm:gap-6 mt-16 md:mt-20"
         >
           {/* Primary */}
-          <button className="group relative flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-white text-black font-semibold uppercase text-[11px] tracking-widest overflow-hidden rounded-full transition-all active:scale-95">
+          <button
+            onClick={() => window.dispatchEvent(new Event("open-contact"))}
+            className="group relative flex items-center justify-center gap-3 px-8 md:px-10 py-4 md:py-5 bg-white text-black font-semibold uppercase text-[11px] tracking-widest overflow-hidden rounded-full transition-all active:scale-95"
+          >
             <span className="relative z-10">Let's Talk</span>
+
             <motion.div
               className="relative z-10"
               whileHover={{ rotate: 45, x: 2, y: -2 }}
             >
               <ArrowUpRight size={18} strokeWidth={3} />
             </motion.div>
+
             <div className="absolute inset-0 bg-indigo-500 translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]" />
           </button>
 
